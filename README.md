@@ -18,3 +18,11 @@ Roadmap:
     Decide on the environments and start designing gameplay.
 
 For now this is a testing ground for systems only.
+
+##### 3 June 2023
+
+Added another idea for the environment backgrounds, made in Aseprite.##### 3 June 2023
+
+Added another idea for the environment backgrounds, made in Aseprite.##### 3 June 2023
+
+Added another idea for the environment backgrounds, made in Aseprite.
