@@ -30,4 +30,4 @@ position = Vector2( 528, 596 )
 position = Vector2( 2262, -1054 )
 
 [node name="Test_Line_Env1" parent="." instance=ExtResource( 8 )]
-position = Vector2( 5324, -1142 )
+position = Vector2( 8516, 184 )

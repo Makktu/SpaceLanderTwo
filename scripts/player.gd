@@ -11,7 +11,6 @@ var rotation_direction: int
 export (float) var rotation_speed = 3.5
 
 func _physics_process(delta):		
-	
 	input_vector.x = Input.get_action_strength("thrust")
 	
 	if Input.get_action_strength("thrust"):
@@ -43,17 +42,5 @@ func _physics_process(delta):
 	if collision_info:
 		velocity.y -= 50
 		velocity.x = -velocity.x
-		rotation_direction += 1
+#		rotation += 2 * rotation_speed * delta
 		print("DAMAGE!")
-
-	
-	if $"/root/Global".collision_with_ground:
-		collided_with_something()
-		
-func collided_with_something():
-	if velocity.x:
-		velocity.x = -velocity.x / 2
-	if velocity.y:
-		velocity.y = -velocity.y / 2
-	$"/root/Global".collision_with_ground = false
-	print("GETTING HERE?")
