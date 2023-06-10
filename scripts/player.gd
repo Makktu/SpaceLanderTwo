@@ -3,12 +3,12 @@ extends KinematicBody2D
 var game_paused : bool = false
 var input_vector : Vector2
 var velocity : Vector2
-export (int) var acceleration = 400
-export (int) var max_speed = 500
-export (int) var gravity = 10
+export (int) var acceleration = 100
+export (int) var max_speed = 200
+export (int) var gravity = 5
 
 var rotation_direction: int
-export (float) var rotation_speed = 3.5
+export (float) var rotation_speed = 2.5
 
 func _physics_process(delta):		
 	input_vector.x = Input.get_action_strength("thrust")
