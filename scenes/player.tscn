@@ -47,7 +47,8 @@ animations = [ {
 modulate = Color( 0.745098, 0.686275, 0.054902, 1 )
 collision/safe_margin = 0.001
 script = ExtResource( 2 )
-gravity = 40
+acceleration = 300
+max_speed = 300
 
 [node name="Sprite" type="Sprite" parent="."]
 rotation = 1.5708
