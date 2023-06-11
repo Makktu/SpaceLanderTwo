@@ -8,6 +8,16 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "TouchScreenButton",
+"class": "TouchScreenControls",
+"language": "GDScript",
+"path": "res://scenes/TouchScreenControls.gd"
+} ]
+_global_script_class_icons={
+"TouchScreenControls": ""
+}
+
 [application]
 
 config/name="SpaceLanderTwo"

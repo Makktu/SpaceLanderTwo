@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scripts/Mist3.gd" type="Script" id=1]
+[ext_resource path="res://assets/graphics/Mist_1.png" type="Texture" id=2]
+
+[node name="MistMedium" type="Node2D"]
+
+[node name="Mist" type="Sprite" parent="."]
+modulate = Color( 0.666667, 0.533333, 0.184314, 0.972549 )
+self_modulate = Color( 0, 1, 0.133333, 1 )
+scale = Vector2( 12.519, 92.1909 )
+z_index = -100
+texture = ExtResource( 2 )
+script = ExtResource( 1 )
