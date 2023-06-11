@@ -3,6 +3,7 @@
 [ext_resource path="res://assets/layer0_starfield.png" type="Texture" id=2]
 
 [node name="ParallaxBackground" type="ParallaxBackground"]
+scroll_ignore_camera_zoom = true
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="."]
 motion_scale = Vector2( 0.1, 0.1 )
