@@ -30,18 +30,18 @@ func get_swipe_direction(swipe, swipe_margin):
 		
 func _on_self_pressed():
 	on_area = true
-	tap_counter()
+#	tap_counter()
 	
 func _on_self_released():
 	on_area = false
 
-func tap_counter():
-	if $TapTimer.time_left == 0:
-		$TapTimer.start()
-	else:
-		tap_count += 1
-		
-	if tap_count >= 2:
-		$TapTimer.stop()
-		tap_count = 1		
-		emit_signal("double_tap")
+#func tap_counter():
+#	if $TapTimer.time_left == 0:
+#		$TapTimer.start()
+#	else:
+#		tap_count += 1
+#
+#	if tap_count >= 2:
+#		$TapTimer.stop()
+#		tap_count = 1		
+#		emit_signal("double_tap")

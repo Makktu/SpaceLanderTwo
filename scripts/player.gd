@@ -1,5 +1,15 @@
 extends KinematicBody2D
 
+onready var Swipe = $Camera2D/TouchScreenControls
+var swipe_up = false
+var swipe_down = false
+var swipe_left = false
+var swipe_right = false
+var swipe_down_released = false
+var swipe_up_released = false
+var swipe_left_released = false
+var swipe_right_released = false
+
 var game_paused : bool = false
 var input_vector : Vector2
 var velocity : Vector2
@@ -10,10 +20,15 @@ export (int) var gravity = 5
 var rotation_direction: int
 export (float) var rotation_speed = 2.5
 
-func _physics_process(delta):		
+var shields = 100
+
+func _physics_process(delta):
 	input_vector.x = Input.get_action_strength("thrust")
 	
-	if Input.get_action_strength("thrust"):
+	if swipe_up:
+		input_vector.x = 1
+	
+	if Input.get_action_strength("thrust") || swipe_up:
 		$AnimatedSprite.visible = true
 		$AnimatedSprite.play("exhaust_full")
 	else:
@@ -22,10 +37,15 @@ func _physics_process(delta):
 		
 	rotation_direction = 0
 	
-	if Input.is_action_pressed("rotate_left"):
+	if Input.is_action_pressed("rotate_left") || swipe_right:
 		rotation_direction -= 1
-	if Input.is_action_pressed("rotate_right"):
+	if Input.is_action_pressed("rotate_right") || swipe_left:
 		rotation_direction += 1
+		
+	if swipe_left_released || swipe_right_released:
+		rotation_direction = 0
+		swipe_left_released = false
+		swipe_right_released = false
 	
 	velocity += Vector2(input_vector.x * acceleration * delta, 0).rotated(rotation)
 	velocity.x = clamp(velocity.x, -max_speed, max_speed)
@@ -44,3 +64,27 @@ func _physics_process(delta):
 		velocity.x = -velocity.x
 #		rotation += 2 * rotation_speed * delta
 		print("DAMAGE!")
+		
+func _input(event):
+	if event is InputEventScreenDrag:
+		if Swipe.get_swipe_direction(event.relative, 5) == Vector2.UP:
+			swipe_down = true
+		if Swipe.get_swipe_direction(event.relative, 5) == Vector2.DOWN:
+			swipe_up = true
+		if Swipe.get_swipe_direction(event.relative, 5) == Vector2.LEFT:
+			swipe_right = true
+		if Swipe.get_swipe_direction(event.relative, 5) == Vector2.RIGHT:
+			swipe_left = true
+			
+	if Swipe.on_area == false && swipe_down == true:
+		swipe_down_released = true
+		swipe_down = false
+	if Swipe.on_area == false && swipe_up == true:
+		swipe_up_released = true
+		swipe_up = false
+	if Swipe.on_area == false && swipe_left == true:
+		swipe_left_released = true
+		swipe_left = false
+	if Swipe.on_area == false && swipe_right == true:
+		swipe_right_released = true
+		swipe_right = false	

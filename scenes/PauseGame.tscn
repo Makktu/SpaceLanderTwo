@@ -17,6 +17,7 @@ margin_bottom = 51.0
 rect_scale = Vector2( 1.5, 1.5 )
 
 [node name="Button" type="Button" parent="Control"]
+visible = false
 margin_right = 37.0
 margin_bottom = 20.0
 text = "DEV"
