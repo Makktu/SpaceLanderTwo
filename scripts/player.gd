@@ -13,16 +13,23 @@ var swipe_right_released = false
 var game_paused : bool = false
 var input_vector : Vector2
 var velocity : Vector2
+
+var rotation_direction: int
+
 export (int) var acceleration = 100
 export (int) var max_speed = 200
 export (int) var gravity = 5
-
-var rotation_direction: int
 export (float) var rotation_speed = 2.5
 
 var shields = 100
 
+
 func _physics_process(delta):
+	if $"/root/Global".in_gravity_trap:
+		gravity = $"/root/Global".changed_gravity
+	else:
+		gravity = $"/root/Global".world_gravity
+	
 	input_vector.x = Input.get_action_strength("thrust")
 	
 	if swipe_up:
@@ -60,10 +67,12 @@ func _physics_process(delta):
 	var collision_info = move_and_collide(velocity * delta)
 	
 	if collision_info:
-		velocity.y -= 50
-		velocity.x = -velocity.x
-#		rotation += 2 * rotation_speed * delta
-		print("DAMAGE!")
+		velocity.y = -velocity.y * 1.35
+		velocity.x = -velocity.x * 1.35
+		shields -= 10
+		print("DAMAGE", " >> SHIELDS: ", shields)
+		if shields <= 0:
+			print("THAT WOULD BE GAME OVER IF THIS WAS REAL...")
 		
 func _input(event):
 	if event is InputEventScreenDrag:
@@ -87,4 +96,4 @@ func _input(event):
 		swipe_left = false
 	if Swipe.on_area == false && swipe_right == true:
 		swipe_right_released = true
-		swipe_right = false	
+		swipe_right = false

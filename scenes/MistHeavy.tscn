@@ -9,7 +9,7 @@ script/source = "extends Sprite
 
 var movement_direction = 0.5
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	position.x += movement_direction
 	if position.x > 11000:
 		position.x = -11000

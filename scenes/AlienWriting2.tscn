@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://assets/graphics/alien_writing3.png" type="Texture" id=1]
+
+[node name="AlienWriting2" type="Node2D"]
+
+[node name="Sprite" type="Sprite" parent="."]
+rotation = -0.169274
+texture = ExtResource( 1 )

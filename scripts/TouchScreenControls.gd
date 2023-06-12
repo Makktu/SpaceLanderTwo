@@ -2,7 +2,7 @@ extends TouchScreenButton
 
 class_name TouchScreenControls
 
-signal double_tap
+#signal double_tap
 var tap_count = 1
 
 var on_area = false

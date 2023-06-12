@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scenes/player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/GravityTrap.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/MusicManager.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scripts/World.gd" type="Script" id=4]
 [ext_resource path="res://scenes/ParallaxBackground.tscn" type="PackedScene" id=5]
@@ -14,7 +15,6 @@ script = ExtResource( 4 )
 [node name="player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 344, 1830 )
 z_index = 10
-max_speed = 150
 
 [node name="MusicManager" parent="." instance=ExtResource( 3 )]
 position = Vector2( 3507, 219 )
@@ -25,3 +25,7 @@ position = Vector2( 3507, 219 )
 
 [node name="Test_Line_Env1" parent="." instance=ExtResource( 8 )]
 position = Vector2( 679, 2321 )
+
+[node name="GravityTrap" parent="." instance=ExtResource( 2 )]
+position = Vector2( 896, 10060 )
+scale = Vector2( 3.95559, 6.54255 )
