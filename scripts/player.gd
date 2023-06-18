@@ -16,9 +16,14 @@ var velocity : Vector2
 
 var rotation_direction: int
 
-export (int) var acceleration = 100
-export (int) var max_speed = 200
-export (int) var gravity = 5
+#export (int) var acceleration = 100 or 25?
+#export (int) var max_speed = 200 or 40?
+#export (int) var gravity = 5 or 3?
+#export (float) var rotation_speed = 2.5
+
+export (int) var acceleration = 30
+export (int) var max_speed = 50
+export (int) var gravity = 7
 export (float) var rotation_speed = 2.5
 
 var shields = 100

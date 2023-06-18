@@ -18,10 +18,11 @@ region_enabled = true
 region_rect = Rect2( 0, 0, 2540, 2540 )
 
 [node name="Sun" type="ParallaxLayer" parent="."]
+modulate = Color( 1, 0, 0, 1 )
 position = Vector2( 123, -27 )
 motion_scale = Vector2( 0.2, 0.2 )
 motion_offset = Vector2( 100, 300 )
-motion_mirroring = Vector2( 10000, 10000 )
+motion_mirroring = Vector2( 12000, 12000 )
 
 [node name="Sprite" type="Sprite" parent="Sun"]
 position = Vector2( 528, 1908 )
