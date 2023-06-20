@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scenes/player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/GravityTrap.tscn" type="PackedScene" id=2]
@@ -6,7 +6,6 @@
 [ext_resource path="res://scripts/World.gd" type="Script" id=4]
 [ext_resource path="res://scenes/ParallaxBackground.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/PauseGame.tscn" type="PackedScene" id=6]
-[ext_resource path="res://scenes/GreenBlackHole.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/Test_Line_Env1.tscn" type="PackedScene" id=8]
 
 [node name="World" type="Node2D"]
@@ -32,5 +31,6 @@ position = Vector2( 679, 2321 )
 position = Vector2( 436, 10190 )
 scale = Vector2( 3.95559, 6.54255 )
 
-[node name="GreenBlackHole" parent="." instance=ExtResource( 7 )]
-position = Vector2( 899, 11208 )
+[node name="GravityTrap2" parent="." instance=ExtResource( 2 )]
+position = Vector2( 8328, 7765 )
+scale = Vector2( 3.95559, 6.54255 )

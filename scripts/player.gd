@@ -76,8 +76,14 @@ func _physics_process(delta):
 		velocity.x = -velocity.x * 1.35
 		shields -= 10
 		print("DAMAGE", " >> SHIELDS: ", shields)
+		$Animated_Forcefield.visible = true
+		$Animated_Forcefield2.visible = true
+		$Animated_Forcefield.play("forcefield")
+		$Animated_Forcefield2.play("forcefield")
+		$Forcefield_Timer.start()
 		if shields <= 0:
-			print("THAT WOULD BE GAME OVER IF THIS WAS REAL...")
+			shields = 100
+			$"/root/Global".pause_or_game_over("game_over")
 		
 func _input(event):
 	if event is InputEventScreenDrag:
@@ -102,3 +108,10 @@ func _input(event):
 	if Swipe.on_area == false && swipe_right == true:
 		swipe_right_released = true
 		swipe_right = false
+
+
+func _on_Forcefield_Timer_timeout():
+	$Animated_Forcefield.stop()
+	$Animated_Forcefield.visible = false
+	$Animated_Forcefield2.stop()
+	$Animated_Forcefield2.visible = false

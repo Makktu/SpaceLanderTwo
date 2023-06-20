@@ -3,4 +3,5 @@
 [ext_resource path="res://scripts/Global.gd" type="Script" id=1]
 
 [node name="Global" type="Node2D"]
+pause_mode = 2
 script = ExtResource( 1 )

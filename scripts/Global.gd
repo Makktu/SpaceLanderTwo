@@ -9,5 +9,19 @@ var in_gravity_trap : bool = false
 var world_color_changed : bool = false
 var world_color_now = ""
 
+var game_over = false
+
+func pause_or_game_over(state):
+	if state == "pause":
+		get_tree().paused = true
+		
+	if state == "unpause":
+		get_tree().paused = false
+		
+	if state == "game_over":
+		game_over = true
+		get_tree().paused = true
+		
+
 
 

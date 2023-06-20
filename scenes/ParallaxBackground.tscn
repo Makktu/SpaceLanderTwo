@@ -18,7 +18,7 @@ region_enabled = true
 region_rect = Rect2( 0, 0, 2540, 2540 )
 
 [node name="Sun" type="ParallaxLayer" parent="."]
-modulate = Color( 1, 0, 0, 1 )
+modulate = Color( 0.529412, 0.835294, 0.301961, 1 )
 position = Vector2( 123, -27 )
 motion_scale = Vector2( 0.2, 0.2 )
 motion_offset = Vector2( 100, 300 )
@@ -35,7 +35,7 @@ motion_offset = Vector2( 100, 300 )
 motion_mirroring = Vector2( 10000, 10000 )
 
 [node name="Sprite" type="Sprite" parent="RuinedMoon"]
-position = Vector2( 378, 2107 )
+position = Vector2( 922, 2200 )
 scale = Vector2( 4, 4 )
 texture = ExtResource( 1 )
 centered = false
