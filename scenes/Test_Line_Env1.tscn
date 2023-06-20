@@ -161,7 +161,13 @@ rotation = 0.345345
 scale = Vector2( 2, 2 )
 
 [node name="AlienWriting2" parent="." instance=ExtResource( 6 )]
-position = Vector2( 403, 1537 )
-rotation = -1.30597
+position = Vector2( 284, 1488 )
+rotation = 0.604201
+scale = Vector2( 2, 2 )
+
+[node name="AlienWriting3" parent="." instance=ExtResource( 6 )]
+position = Vector2( 809, 1841 )
+rotation = 3.1801
+scale = Vector2( 2, 2 )
 
 [connection signal="body_entered" from="EndLevel" to="." method="_on_EndLevel_body_entered"]
