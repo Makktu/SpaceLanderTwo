@@ -20,7 +20,7 @@ func pause_or_game_over(state):
 		
 	if state == "game_over":
 		game_over = true
-		get_tree().paused = true
+#		get_tree().paused = true
 		
 
 

@@ -76,8 +76,10 @@ animations = [ {
 "speed": 15.0
 } ]
 
-[node name="player" type="KinematicBody2D"]
+[node name="player" type="KinematicBody2D" groups=["player"]]
 modulate = Color( 0.745098, 0.686275, 0.054902, 1 )
+collision_layer = 3
+collision_mask = 3
 collision/safe_margin = 0.001
 script = ExtResource( 2 )
 max_speed = 40

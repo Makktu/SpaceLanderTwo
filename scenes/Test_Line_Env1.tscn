@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://assets/graphics/Stage_6.png" type="Texture" id=1]
 [ext_resource path="res://scenes/MistHeavy.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://scenes/AlienWriting.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/AlienWriting2.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/MistLight.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/Spawner1.tscn" type="PackedScene" id=8]
 
 [sub_resource type="Environment" id=1]
 background_mode = 4
@@ -169,5 +170,12 @@ scale = Vector2( 2, 2 )
 position = Vector2( 809, 1841 )
 rotation = 3.1801
 scale = Vector2( 2, 2 )
+
+[node name="Spawner1" parent="." instance=ExtResource( 8 )]
+position = Vector2( 478, -1991 )
+
+[node name="Spawner2" parent="." instance=ExtResource( 8 )]
+position = Vector2( 2826, 2746 )
+rotation = 1.5708
 
 [connection signal="body_entered" from="EndLevel" to="." method="_on_EndLevel_body_entered"]
