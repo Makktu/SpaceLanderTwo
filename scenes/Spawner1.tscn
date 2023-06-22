@@ -6,17 +6,15 @@
 extents = Vector2( 154.5, 582 )
 
 [node name="Spawner1" type="Node2D"]
-position = Vector2( 12, -768 )
 script = ExtResource( 1 )
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2( 144.5, 2858 )
 shape = SubResource( 1 )
 
 [node name="SpawnTimer" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 10.0
 one_shot = true
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]

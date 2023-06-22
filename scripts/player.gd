@@ -21,8 +21,8 @@ var rotation_direction: int
 #export (int) var gravity = 5 or 3?
 #export (float) var rotation_speed = 2.5
 
-export (int) var acceleration = 30
-export (int) var max_speed = 50
+export (int) var acceleration = 60 # 30
+export (int) var max_speed = 400 # 50
 export (int) var gravity = 7
 export (float) var rotation_speed = 2.5
 

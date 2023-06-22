@@ -7,6 +7,9 @@
 [ext_resource path="res://scripts/Enemy1.gd" type="Script" id=5]
 [ext_resource path="res://assets/animations/Explosion.png" type="Texture" id=6]
 
+[sub_resource type="CircleShape2D" id=16]
+radius = 20.025
+
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
 "frames": [ ExtResource( 4 ), ExtResource( 3 ), ExtResource( 1 ), ExtResource( 2 ) ],
@@ -14,9 +17,6 @@ animations = [ {
 "name": "default",
 "speed": 15.0
 } ]
-
-[sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 19, 19 )
 
 [sub_resource type="AtlasTexture" id=3]
 flags = 4
@@ -87,22 +87,20 @@ animations = [ {
 } ]
 
 [node name="Enemy1" type="KinematicBody2D"]
-collision_layer = 2
-collision_mask = 2
 script = ExtResource( 5 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -1, -1 )
+shape = SubResource( 16 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 self_modulate = Color( 0.172549, 0.937255, 0.0627451, 1 )
 frames = SubResource( 1 )
-frame = 2
+frame = 1
 playing = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -1, -1 )
-shape = SubResource( 2 )
-
 [node name="ExtinctionTimer" type="Timer" parent="."]
-wait_time = 70.0
+wait_time = 2000.0
 one_shot = true
 autostart = true
 
@@ -113,4 +111,12 @@ scale = Vector2( 2, 2 )
 frames = SubResource( 15 )
 animation = "explode"
 
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+avoidance_enabled = true
+max_speed = 55.0
+
+[node name="NavTimer" type="Timer" parent="."]
+wait_time = 0.408
+
 [connection signal="timeout" from="ExtinctionTimer" to="." method="_on_ExtinctionTimer_timeout"]
+[connection signal="timeout" from="NavTimer" to="." method="_on_NavTimer_timeout"]

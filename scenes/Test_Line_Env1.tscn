@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://assets/graphics/Stage_6.png" type="Texture" id=1]
 [ext_resource path="res://scenes/MistHeavy.tscn" type="PackedScene" id=2]
@@ -24,18 +24,23 @@ adjustment_saturation = 2.07
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 338.532, 25.0674 )
 
+[sub_resource type="NavigationPolygon" id=3]
+vertices = PoolVector2Array( 225, 2979, 648, 3844, 356, 3616, 100, 3137, 91, 2914, 595, 1787, 564, 2115, 342, 2300, 342, 2074, 465, 1894, 537, 2394, 778, 2510, 356, 2533, -54, 4315, 267, 4619, -87, 4783, -91, 2803, 119, 2510, -365, 2742, -304, 2951, -418, 2886, 335, 1201, 294, 598, 411, -306, 1233, -240, 1256, 844, 705, 1513, 547, 1502, -216, 2157, -100, 2311, -381, 2297, -644, 2225, -490, 2622, -657, 3756, -353, 3231, -390, 5301, -49, 3477, -489, 5843, 61, 5218, 45, 5793, -317, 6590, 341, 6401, 94, 6705 )
+polygons = [ PoolIntArray( 0, 1, 2, 3, 4 ), PoolIntArray( 5, 6, 7, 8, 9 ), PoolIntArray( 10, 11, 0, 12 ), PoolIntArray( 13, 14, 15 ), PoolIntArray( 16, 17, 12, 0, 4 ), PoolIntArray( 18, 16, 4, 19, 20 ), PoolIntArray( 21, 22, 23, 24, 25, 26, 27 ), PoolIntArray( 27, 26, 5, 9 ), PoolIntArray( 28, 9, 8, 29, 30 ), PoolIntArray( 31, 28, 30 ), PoolIntArray( 32, 31, 30, 18 ), PoolIntArray( 20, 32, 18 ), PoolIntArray( 33, 20, 19, 34 ), PoolIntArray( 35, 33, 34, 36, 13, 15 ), PoolIntArray( 37, 35, 15, 38, 39, 40 ), PoolIntArray( 40, 39, 41, 42 ) ]
+outlines = [ PoolVector2Array( 294, 598, 335, 1201, 547, 1502, 465, 1894, -216, 2157, -644, 2225, -490, 2622, -418, 2886, -657, 3756, -390, 5301, -489, 5843, -317, 6590, 94, 6705, 341, 6401, 45, 5793, 61, 5218, -87, 4783, 267, 4619, -54, 4315, -49, 3477, -353, 3231, -304, 2951, 91, 2914, 100, 3137, 356, 3616, 648, 3844, 225, 2979, 778, 2510, 537, 2394, 356, 2533, 119, 2510, -91, 2803, -365, 2742, -381, 2297, -100, 2311, 342, 2074, 342, 2300, 564, 2115, 595, 1787, 705, 1513, 1256, 844, 1233, -240, 411, -306 ) ]
+
 [node name="Test_Line_Env1" type="KinematicBody2D"]
 script = ExtResource( 4 )
 
 [node name="MistHeavy" parent="." instance=ExtResource( 2 )]
-position = Vector2( -10447, 9136 )
+position = Vector2( -4568, 9997 )
 
 [node name="MistMedium" parent="." instance=ExtResource( 3 )]
 modulate = Color( 1, 1, 1, 0.415686 )
-position = Vector2( -6484, 6157 )
+position = Vector2( 9711, 4240 )
 
 [node name="MistLight" parent="." instance=ExtResource( 7 )]
-position = Vector2( 8981, -5553 )
+position = Vector2( 16669, -6062 )
 scale = Vector2( 1.25, 1.25 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -172,10 +177,9 @@ rotation = 3.1801
 scale = Vector2( 2, 2 )
 
 [node name="Spawner1" parent="." instance=ExtResource( 8 )]
-position = Vector2( 478, -1991 )
+position = Vector2( 669, 766 )
 
-[node name="Spawner2" parent="." instance=ExtResource( 8 )]
-position = Vector2( 2826, 2746 )
-rotation = 1.5708
+[node name="NavigationPolygonInstance" type="NavigationPolygonInstance" parent="."]
+navpoly = SubResource( 3 )
 
 [connection signal="body_entered" from="EndLevel" to="." method="_on_EndLevel_body_entered"]

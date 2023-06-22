@@ -1,10 +1,10 @@
 extends Node2D
 
-export (bool) var music_on = true
-
+var music_on = false
 
 func _ready():
 	if music_on:
+		print(music_on)
 		$Track3.play()
 		
 
