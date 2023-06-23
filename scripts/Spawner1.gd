@@ -8,7 +8,7 @@ func start_spawning():
 	print("SPAWN!!", amount_spawned)
 	amount_spawned += 1
 	var loaded_enemy = basic_enemy.instance()
-	add_child(loaded_enemy)
+	get_parent().get_node("SpawnPoint1").add_child(loaded_enemy)
 	if amount_spawned < 25:
 		$SpawnTimer.start()
 	

@@ -9,7 +9,7 @@
 modulate = Color( 0.666667, 0.533333, 0.184314, 0.972549 )
 self_modulate = Color( 0, 1, 0.133333, 1 )
 position = Vector2( -5025, 4056 )
-scale = Vector2( 12.519, 92.1909 )
+scale = Vector2( 70, 100 )
 z_index = -100
 texture = ExtResource( 2 )
 script = ExtResource( 1 )
