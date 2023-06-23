@@ -43,8 +43,14 @@ func _on_NavTimer_timeout() -> void:
 	$NavTimer.start()
 	
 func _on_Area2D_body_entered(body):
-	if body.name == "Player":
-		_on_NavTimer_timeout()
+	if body.name == "player":
+		navagent.max_speed *= 4
+		$DelayTimer.start()
+
+		
+		
+func _on_DelayTimer_timeout():
+	_on_ExtinctionTimer_timeout()
 
 ####################################################
 #		if currentWaypointIndex >= path.size():
@@ -69,8 +75,3 @@ func _on_Area2D_body_entered(body):
 #	queue_free()
 
 
-
-
-
-func _on_NavigationAgent2D_target_reached():
-	_on_NavTimer_timeout()
