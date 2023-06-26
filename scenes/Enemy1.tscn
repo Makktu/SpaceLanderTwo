@@ -99,11 +99,10 @@ shape = SubResource( 16 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 self_modulate = Color( 0.172549, 0.937255, 0.0627451, 1 )
 frames = SubResource( 1 )
-frame = 1
 playing = true
 
 [node name="ExtinctionTimer" type="Timer" parent="."]
-wait_time = 2000.0
+wait_time = 180.0
 one_shot = true
 autostart = true
 
@@ -131,7 +130,12 @@ shape = SubResource( 17 )
 wait_time = 1.3
 one_shot = true
 
+[node name="move_up_timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
 [connection signal="timeout" from="ExtinctionTimer" to="." method="_on_ExtinctionTimer_timeout"]
 [connection signal="timeout" from="NavTimer" to="." method="_on_NavTimer_timeout"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
 [connection signal="timeout" from="DelayTimer" to="." method="_on_DelayTimer_timeout"]
+[connection signal="timeout" from="move_up_timer" to="." method="_on_move_up_timer_timeout"]

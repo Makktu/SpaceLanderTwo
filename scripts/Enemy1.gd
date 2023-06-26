@@ -4,6 +4,8 @@ var speed = 60
 var navagent : NavigationAgent2D
 var target_position
 
+var move_up_complete = false # enemy will move up (relative to its spawn point) for 2 seconds before path-finding and player-hunting begins
+
 onready var the_player = get_tree().get_nodes_in_group("player")[0]
 
 func _ready():
@@ -11,9 +13,13 @@ func _ready():
 	navagent.connect("velocity_computed", self, "_on_velocity_computed")
 	$NavTimer.start()
 	$AnimatedSprite.play("default")
+	$move_up_timer.start()
 
 	
 func _physics_process(delta):
+	if !move_up_complete:
+		position.y -= 1
+		return
 	if navagent.is_navigation_finished():
 		return
 	var target_position = navagent.get_next_location()
@@ -43,35 +49,17 @@ func _on_NavTimer_timeout() -> void:
 	$NavTimer.start()
 	
 func _on_Area2D_body_entered(body):
+	print("entered mine radius")
 	if body.name == "player":
+		if !move_up_complete:
+			return
 		navagent.max_speed *= 4
 		$DelayTimer.start()
-
 		
 		
 func _on_DelayTimer_timeout():
 	_on_ExtinctionTimer_timeout()
 
-####################################################
-#		if currentWaypointIndex >= path.size():
-#			path.clear()
-#			currentWaypointIndex = 0
-	
-#	if $"/root/Global".pulser_fired:
-#		distance_to_player = the_player.global_position.distance_to(global_position)
-#		if distance_to_player < 120:
-#			pulser_damage()
-			
 
-
-
-		
-#func pulser_damage():
-#	$"/root/Global".enemies_chasing_player -= 1
-#	$AnimatedExplosion.visible = true
-#	$AnimatedSprite.visible = false
-#	$AnimatedExplosion.play("explode")
-#	yield($AnimatedExplosion, "animation_finished")
-#	queue_free()
-
-
+func _on_move_up_timer_timeout():
+	move_up_complete = true
