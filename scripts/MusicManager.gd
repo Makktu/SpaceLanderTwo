@@ -1,6 +1,6 @@
 extends Node2D
 
-var music_on = true
+var music_on = false
 
 func _ready():
 	if music_on:

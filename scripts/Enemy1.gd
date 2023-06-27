@@ -4,7 +4,7 @@ var speed = 60
 var navagent : NavigationAgent2D
 var target_position
 
-var move_up_complete = false # enemy will move up (relative to its spawn point) for 2 seconds before path-finding and player-hunting begins
+var move_up_complete = false # enemy will move up (relative to its spawn point) for 2 seconds before the path-finding/ player-hunting script begins
 
 onready var the_player = get_tree().get_nodes_in_group("player")[0]
 
@@ -18,7 +18,7 @@ func _ready():
 	
 func _physics_process(delta):
 	if !move_up_complete:
-		position.y -= 1
+		position.y -= 0.25
 		return
 	if navagent.is_navigation_finished():
 		return
@@ -49,10 +49,7 @@ func _on_NavTimer_timeout() -> void:
 	$NavTimer.start()
 	
 func _on_Area2D_body_entered(body):
-	print("entered mine radius")
 	if body.name == "player":
-		if !move_up_complete:
-			return
 		navagent.max_speed *= 4
 		$DelayTimer.start()
 		
@@ -62,4 +59,5 @@ func _on_DelayTimer_timeout():
 
 
 func _on_move_up_timer_timeout():
+	$Area2D.monitoring = true
 	move_up_complete = true

@@ -12,14 +12,12 @@
 [sub_resource type="Environment" id=1]
 background_mode = 4
 glow_enabled = true
-glow_intensity = 0.5
-glow_strength = 0.5
+glow_strength = 0.31
 glow_blend_mode = 0
-glow_hdr_luminance_cap = 2.25
 adjustment_enabled = true
 adjustment_brightness = 1.15
-adjustment_contrast = 3.2
-adjustment_saturation = 2.07
+adjustment_contrast = 3.43
+adjustment_saturation = 1.84
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 338.532, 25.0674 )
@@ -189,6 +187,36 @@ z_index = -100
 [node name="MinesLauncher2" parent="." instance=ExtResource( 9 )]
 position = Vector2( 433, 2084 )
 rotation = -0.590914
+z_index = -100
+
+[node name="MinesLauncher3" parent="." instance=ExtResource( 9 )]
+position = Vector2( 112, 2018 )
+rotation = -2.2378
+z_index = -100
+
+[node name="MinesLauncher4" parent="." instance=ExtResource( 9 )]
+position = Vector2( -95, 2227 )
+rotation = -0.553885
+z_index = -100
+
+[node name="MinesLauncher5" parent="." instance=ExtResource( 9 )]
+position = Vector2( 31.9999, 2154 )
+rotation = -0.553885
+z_index = -100
+
+[node name="MinesLauncher6" parent="." instance=ExtResource( 9 )]
+position = Vector2( 142, 2086 )
+rotation = -0.553885
+z_index = -100
+
+[node name="MinesLauncher7" parent="." instance=ExtResource( 9 )]
+position = Vector2( -476, 2541 )
+rotation = -1.58593
+z_index = -100
+
+[node name="MinesLauncher8" parent="." instance=ExtResource( 9 )]
+position = Vector2( -362, 2763 )
+rotation = 1.2036
 z_index = -100
 
 [connection signal="body_entered" from="EndLevel" to="." method="_on_EndLevel_body_entered"]

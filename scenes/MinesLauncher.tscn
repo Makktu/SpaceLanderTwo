@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://assets/graphics/MinesLauncher-export.png" type="Texture" id=1]
-[ext_resource path="res://scenes/MinesLauncher.gd" type="Script" id=2]
+[ext_resource path="res://scripts/MinesLauncher.gd" type="Script" id=2]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 215.0
@@ -53,7 +53,7 @@ position = Vector2( 0, 118 )
 shape = SubResource( 1 )
 
 [node name="SpawnTimer" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 3.0
 one_shot = true
 
 [node name="activation_animation" type="AnimationPlayer" parent="."]
