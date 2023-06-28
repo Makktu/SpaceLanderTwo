@@ -1,14 +1,7 @@
 [gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://themes/spacelander_font.tres" type="Theme" id=1]
-[ext_resource path="res://scripts/StartScreen.gd" type="Script" id=2]
-
-[sub_resource type="StyleBoxFlat" id=1]
-bg_color = Color( 0.180392, 0.615686, 0.105882, 1 )
-expand_margin_left = 20.0
-expand_margin_right = 20.0
-expand_margin_top = 5.0
-expand_margin_bottom = 5.0
+[ext_resource path="res://scenes/StartScreen.gd" type="Script" id=2]
 
 [sub_resource type="Animation" id=2]
 length = 0.001
@@ -36,12 +29,24 @@ tracks/1/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ) ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("StartScreen/SpaceLander2_title:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
 
 [sub_resource type="Animation" id=3]
 resource_name = "fade_in"
 length = 20.0
 tracks/0/type = "value"
-tracks/0/path = NodePath("SpaceLander2_title:self_modulate")
+tracks/0/path = NodePath("StartScreen/SpaceLander2_title:self_modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -53,10 +58,17 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.180392, 0.615686, 0.105882, 1 )
+expand_margin_left = 20.0
+expand_margin_right = 20.0
+expand_margin_top = 5.0
+expand_margin_bottom = 5.0
+
 [sub_resource type="Animation" id=4]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath("StartButton:self_modulate")
+tracks/0/path = NodePath("CenterContainer/StartButton:self_modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -72,7 +84,7 @@ tracks/0/keys = {
 resource_name = "btn_fade_in"
 length = 15.0
 tracks/0/type = "value"
-tracks/0/path = NodePath("StartButton:self_modulate")
+tracks/0/path = NodePath("CenterContainer/StartButton:self_modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -84,40 +96,57 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[node name="StartScreen" type="Control"]
+[node name="Control" type="Control"]
 self_modulate = Color( 1, 1, 1, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="StartScreen" type="CenterContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource( 2 )
 
-[node name="SpaceLander2_title" type="Label" parent="."]
+[node name="SpaceLander2_title" type="Label" parent="StartScreen"]
 self_modulate = Color( 1, 1, 1, 0 )
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = 90.0
-margin_top = 378.0
-margin_right = 202.0
-margin_bottom = 400.0
+margin_left = 153.0
+margin_top = 539.0
+margin_right = 567.0
+margin_bottom = 740.0
 theme = ExtResource( 1 )
 custom_colors/font_color = Color( 0.345098, 0.937255, 0.0745098, 1 )
-text = "SpaceLander 2"
+text = "SpaceLander2
+alpha v0.1.2"
 align = 1
 
-[node name="StartButton" type="Button" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="StartScreen"]
+root_node = NodePath("../..")
+anims/RESET = SubResource( 2 )
+anims/fade_in = SubResource( 3 )
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -360.0
+margin_top = -87.0
+margin_right = 360.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="StartButton" type="Button" parent="CenterContainer"]
 self_modulate = Color( 1, 1, 1, 0 )
-margin_left = 248.0
-margin_top = 577.0
-margin_right = 299.0
-margin_bottom = 604.0
+margin_left = 291.0
+margin_right = 428.0
+margin_bottom = 87.0
 theme = ExtResource( 1 )
 custom_colors/font_color = Color( 0.0431373, 0.0431373, 0.0431373, 1 )
 custom_styles/normal = SubResource( 1 )
 text = "START"
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/RESET = SubResource( 2 )
-anims/fade_in = SubResource( 3 )
-
-[node name="StartButtonAnimation" type="AnimationPlayer" parent="."]
+[node name="StartButtonAnimation" type="AnimationPlayer" parent="CenterContainer"]
+root_node = NodePath("../..")
 anims/RESET = SubResource( 4 )
 anims/btn_fade_in = SubResource( 5 )

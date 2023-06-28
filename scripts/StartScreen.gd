@@ -6,3 +6,7 @@ func _ready():
 	$StartButton.visible = true
 	$AnimationPlayer.play("fade_in")
 	$StartButtonAnimation.play("btn_fade_in")
+
+
+func _on_StartButton_pressed():
+	print("START PRESSED")
