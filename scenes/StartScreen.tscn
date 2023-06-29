@@ -1,41 +1,17 @@
 [gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://themes/spacelander_font.tres" type="Theme" id=1]
-[ext_resource path="res://scenes/StartScreen.gd" type="Script" id=2]
+[ext_resource path="res://scripts/StartScreen.gd" type="Script" id=2]
 
 [sub_resource type="Animation" id=2]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath(".:self_modulate")
+tracks/0/path = NodePath("StartScreen/SpaceLander2_title:self_modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 0 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("SpaceLander2_title:self_modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 0 ) ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("StartScreen/SpaceLander2_title:self_modulate")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
@@ -111,13 +87,12 @@ script = ExtResource( 2 )
 [node name="SpaceLander2_title" type="Label" parent="StartScreen"]
 self_modulate = Color( 1, 1, 1, 0 )
 margin_left = 153.0
-margin_top = 539.0
-margin_right = 567.0
-margin_bottom = 740.0
+margin_top = 590.0
+margin_right = 566.0
+margin_bottom = 689.0
 theme = ExtResource( 1 )
 custom_colors/font_color = Color( 0.345098, 0.937255, 0.0745098, 1 )
-text = "SpaceLander2
-alpha v0.1.2"
+text = "SpaceLander2"
 align = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="StartScreen"]
@@ -126,20 +101,20 @@ anims/RESET = SubResource( 2 )
 anims/fade_in = SubResource( 3 )
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
-anchor_left = 0.5
 anchor_top = 1.0
-anchor_right = 0.5
+anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -360.0
 margin_top = -87.0
-margin_right = 360.0
 grow_horizontal = 2
 grow_vertical = 2
+__meta__ = {
+"_edit_use_anchors_": true
+}
 
 [node name="StartButton" type="Button" parent="CenterContainer"]
 self_modulate = Color( 1, 1, 1, 0 )
 margin_left = 291.0
-margin_right = 428.0
+margin_right = 1091.0
 margin_bottom = 87.0
 theme = ExtResource( 1 )
 custom_colors/font_color = Color( 0.0431373, 0.0431373, 0.0431373, 1 )
@@ -150,3 +125,5 @@ text = "START"
 root_node = NodePath("../..")
 anims/RESET = SubResource( 4 )
 anims/btn_fade_in = SubResource( 5 )
+
+[connection signal="pressed" from="CenterContainer/StartButton" to="StartScreen" method="_on_StartButton_pressed"]
