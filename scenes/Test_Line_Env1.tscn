@@ -27,10 +27,10 @@ var update_pos = 0
 func _physics_process(_delta):
 	position.x += movement_direction
 	if position.x > 13000:
-		movement_direction = -10
+		movement_direction = -1
 		position.x = 12999
 	if position.x < -9900:
-		movement_direction = 10
+		movement_direction = 1
 		position.x = -9899
 	update_pos += 1
 	if update_pos > 100:
@@ -60,7 +60,7 @@ scale = Vector2( 1.5, 1.5 )
 texture = ExtResource( 1 )
 
 [node name="MistHeavy" parent="." instance=ExtResource( 2 )]
-position = Vector2( 5363, 8422 )
+position = Vector2( -14936, 10305 )
 
 [node name="MistHeavy2" parent="." instance=ExtResource( 2 )]
 position = Vector2( -9857, 10066 )
