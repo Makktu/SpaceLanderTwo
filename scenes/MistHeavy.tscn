@@ -7,6 +7,7 @@ flags = 4
 load_path = "res://.import/Mist_4.png-dda560259e2fe093c5d9b0291d7f3cab.stex"
 
 [node name="MistHeavy" type="Node2D"]
+position = Vector2( 13726, 8438 )
 script = ExtResource( 1 )
 
 [node name="Mist" type="Sprite" parent="."]
