@@ -5,7 +5,7 @@ var music_on = true
 func _ready():
 	if music_on:
 		print(music_on)
-		$Track3.play()
+		$Track2.play()
 		
 
 func _on_Track1_finished():

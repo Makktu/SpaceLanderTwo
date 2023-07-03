@@ -15,14 +15,17 @@ func spawn_mine():
 func _on_Area2D_body_entered(body):
 	if body.name == 'player' and !already_triggered:
 		already_triggered = true
-		$activation_animation.play("activation")
+#		$activation_animation.play("activation")
+		$Particles2D.emitting = true
 		$SpawnTimer.start()
 
 
 func _on_SpawnTimer_timeout():
+
 	amount_spawned += 1
 	if amount_spawned < 4:
 		spawn_mine()
 		$SpawnTimer.start()
 	else:
-		$activation_animation.stop()
+#		$activation_animation.stop()
+		$Particles2D.emitting = false

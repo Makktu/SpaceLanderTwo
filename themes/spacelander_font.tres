@@ -3,7 +3,7 @@
 [ext_resource path="res://assets/fonts/Stardate81316-aolE.ttf" type="DynamicFontData" id=1]
 
 [sub_resource type="DynamicFont" id=3]
-size = 80
+size = 85
 extra_spacing_top = 4
 extra_spacing_bottom = 4
 extra_spacing_char = 1
@@ -16,7 +16,7 @@ font_data = ExtResource( 1 )
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=4]
-size = 100
+size = 140
 extra_spacing_char = 1
 font_data = ExtResource( 1 )
 

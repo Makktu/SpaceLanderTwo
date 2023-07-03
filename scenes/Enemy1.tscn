@@ -99,7 +99,6 @@ shape = SubResource( 16 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 self_modulate = Color( 0.172549, 0.937255, 0.0627451, 1 )
 frames = SubResource( 1 )
-frame = 2
 playing = true
 
 [node name="ExtinctionTimer" type="Timer" parent="."]
