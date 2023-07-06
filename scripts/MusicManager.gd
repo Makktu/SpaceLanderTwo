@@ -1,22 +1,32 @@
 extends Node2D
 
-var music_on = true
 
 func _ready():
-	if music_on:
-		print(music_on)
-		$Track2.play()
+	start_music()
 		
 
 func _on_Track1_finished():
-	$Track2.play()
+	if $"/root/Global".music_on:
+		$Track2.play()
 	
 
 func _on_Track2_finished():
-	$Track3.play()
+	if $"/root/Global".music_on:
+		$Track3.play()
 
 
 func _on_Track3_finished():
-	$Track1.play()
+	if $"/root/Global".music_on:
+		$Track1.play()
 
 
+func start_music():
+	if $"/root/Global".music_on:
+		$Track3.play()
+		
+		
+func stop_music():
+	print("WHY NOT HERE?")
+	$Track1.stop()
+	$Track2.stop()
+	$Track3.stop()

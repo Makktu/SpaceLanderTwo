@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://themes/spacelander_font.tres" type="Theme" id=1]
+[ext_resource path="res://scenes/GameOverLayer.gd" type="Script" id=2]
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.0313726, 0.215686, 0.0156863, 1 )
+
+[node name="GameOverLayer" type="CanvasLayer"]
+script = ExtResource( 2 )
+
+[node name="Label" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -225.0
+margin_top = -69.0
+margin_right = 225.0
+margin_bottom = 69.0
+theme = ExtResource( 1 )
+custom_colors/font_color = Color( 0.580392, 0.972549, 0.462745, 1 )
+custom_colors/font_outline_modulate = Color( 0.898039, 0.945098, 0.945098, 1 )
+custom_styles/normal = SubResource( 2 )
+text = "GAME OVER"
+
+[node name="Button" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -105.5
+margin_top = -98.0
+margin_right = 105.5
+theme = ExtResource( 1 )
+custom_styles/normal = SubResource( 1 )
+text = "Restart"
+
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]

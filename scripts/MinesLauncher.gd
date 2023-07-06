@@ -14,6 +14,8 @@ func spawn_mine():
 	
 
 func _on_Area2D_body_entered(body):
+	if !$"/root/Global".debug_enemies_on:
+		return
 	if body.name == 'player' and !already_triggered:
 		already_triggered = true
 		$activation_animation.play("activation")

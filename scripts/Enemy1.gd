@@ -34,13 +34,23 @@ func _on_ExtinctionTimer_timeout():
 	$explosion.visible = true
 	$AnimatedSprite.visible = false
 	$explosion.play("explode")
+	# work out how far away exploding mine is from player
+	# and inflict damage if player within blast radius
+	var player_position = the_player.global_position
+	var mine_position = global_transform.origin
+	var distance_from_player = player_position.distance_to(mine_position)
+	print(">>>", distance_from_player)
+	if distance_from_player <= 175:
+		# _____________________^^^ this
+		# is the value for when the explosion affects the player
+		$"/root/Global".taking_damage = true
 	yield($explosion, "animation_finished")
 	queue_free()
 	
-
-func _on_velocity_computed(velocity):
-	print("???")
-	pass
+#
+#func _on_velocity_computed(velocity):
+#	print("???")
+#	pass
 	
 
 func _on_NavTimer_timeout() -> void:

@@ -72,10 +72,16 @@ func _physics_process(delta):
 	
 	var collision_info = move_and_collide(velocity * delta)
 	
-	if collision_info:
+	if collision_info or $"/root/Global".taking_damage:
+		if !$"/root/Global".debug_damage_on:
+			return
 		velocity.y = -velocity.y * 1.35
 		velocity.x = -velocity.x * 1.35
 		shields -= 10
+		if $"/root/Global".taking_damage:
+			shields -= 10
+			print("DOUBLE DAMAGE!")
+			$"/root/Global".taking_damage = false
 		print("DAMAGE", " >> SHIELDS: ", shields)
 		if shields <= 20:
 			$LowForcefield.visible = true
@@ -88,7 +94,6 @@ func _physics_process(delta):
 			$Animated_Forcefield2.play("forcefield")
 			$Forcefield_Timer.start()
 		if shields <= 0:
-			shields = 100
 			$"/root/Global".pause_or_game_over("game_over")
 		
 func _input(event):

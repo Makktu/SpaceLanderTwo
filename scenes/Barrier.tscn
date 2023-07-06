@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://assets/animations/barrier/barrier5.png" type="Texture" id=1]
 [ext_resource path="res://assets/animations/barrier/barrier6.png" type="Texture" id=2]
@@ -14,12 +14,16 @@ animations = [ {
 "speed": 15.0
 } ]
 
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 110.5, 10 )
+
 [node name="Barrier" type="Node2D"]
 script = ExtResource( 9 )
 
 [node name="starting_anim" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
 animation = "starting_up"
+frame = 2
 playing = true
 
 [node name="FireTimer" type="Timer" parent="."]
@@ -30,5 +34,12 @@ one_shot = true
 wait_time = 7.0
 one_shot = true
 
+[node name="CollisionArea2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionArea2D"]
+position = Vector2( -0.5, 0 )
+shape = SubResource( 2 )
+
 [connection signal="timeout" from="FireTimer" to="." method="_on_FireTimer_timeout"]
 [connection signal="timeout" from="DurationTimer" to="." method="_on_DurationTimer_timeout"]
+[connection signal="body_entered" from="CollisionArea2D" to="." method="_on_CollisionArea2D_body_entered"]

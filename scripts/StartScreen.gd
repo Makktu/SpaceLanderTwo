@@ -6,7 +6,6 @@ func _ready():
 
 
 func _on_StartButton_pressed():
-	print("START PRESSED")
 	get_tree().change_scene("res://World.tscn")
 
 
