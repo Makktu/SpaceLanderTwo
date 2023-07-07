@@ -28,6 +28,9 @@ export (float) var rotation_speed = 2.5
 
 var shields = 100
 
+#func _ready():
+#	$Shields.set_as_toplevel(true)
+#	$Shields.text = String(shields)
 
 
 func _physics_process(delta):
@@ -78,6 +81,8 @@ func _physics_process(delta):
 		velocity.y = -velocity.y * 1.35
 		velocity.x = -velocity.x * 1.35
 		shields -= 10
+#		$Shields.text = String(shields)
+#		$Shields.visible = true
 		if $"/root/Global".taking_damage:
 			shields -= 10
 			print("DOUBLE DAMAGE!")

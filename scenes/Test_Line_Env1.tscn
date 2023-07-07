@@ -31,9 +31,9 @@ func _physics_process(_delta):
 	if position.x > 13000:
 		movement_direction = -1
 		position.x = 12999
-	if position.x < -9900:
+	if position.x < 1890:
 		movement_direction = 1
-		position.x = -9899
+		position.x = 1890
 	update_pos += 1
 	if update_pos > 100:
 		print('MIST_HEAVY2:', position.x)
@@ -62,10 +62,13 @@ scale = Vector2( 1.5, 1.5 )
 texture = ExtResource( 1 )
 
 [node name="MistHeavy" parent="." instance=ExtResource( 2 )]
-position = Vector2( -14936, 10305 )
+visible = false
+modulate = Color( 1, 1, 1, 0.854902 )
+position = Vector2( -13280, -4651 )
 
 [node name="MistHeavy2" parent="." instance=ExtResource( 2 )]
-position = Vector2( -9857, 10066 )
+modulate = Color( 1, 1, 1, 0.741176 )
+position = Vector2( 1894, -4676 )
 script = SubResource( 4 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]

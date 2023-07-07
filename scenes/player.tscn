@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=2]
+[gd_scene load_steps=50 format=2]
 
 [ext_resource path="res://assets/graphics/playerShip3_green.png" type="Texture" id=1]
 [ext_resource path="res://scripts/player.gd" type="Script" id=2]
@@ -36,6 +36,7 @@
 [ext_resource path="res://assets/animations/exhaust_animation/efecto_fuego_00027.png" type="Texture" id=34]
 [ext_resource path="res://scripts/TouchScreenControls.gd" type="Script" id=35]
 [ext_resource path="res://assets/animations/shield.png" type="Texture" id=36]
+[ext_resource path="res://themes/spacelander_font.tres" type="Theme" id=37]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -168,5 +169,15 @@ position = Vector2( -3, -5 )
 frames = SubResource( 12 )
 animation = "low_shields"
 frame = 2
+
+[node name="Shields" type="Label" parent="."]
+visible = false
+margin_left = -24.0
+margin_top = -53.0
+margin_right = 272.0
+margin_bottom = 85.0
+rect_scale = Vector2( 0.2, 0.2 )
+theme = ExtResource( 37 )
+text = "shields"
 
 [connection signal="timeout" from="Forcefield_Timer" to="." method="_on_Forcefield_Timer_timeout"]

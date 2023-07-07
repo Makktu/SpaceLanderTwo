@@ -10,9 +10,9 @@ func _physics_process(_delta):
 	if position.x > 15790:
 		movement_direction = -0.5
 		position.x = 15790
-	if position.x < -14940:
+	if position.x < -13280:
 		movement_direction = 0.5
-		position.x = -14935
+		position.x = -13290
 	update_pos += 1
 	if update_pos > 100:
 		print('MIST_HEAVY1:', position.x)
