@@ -47,9 +47,11 @@ func _physics_process(delta):
 	if Input.get_action_strength("thrust") || swipe_up:
 		$AnimatedSprite.visible = true
 		$AnimatedSprite.play("exhaust_full")
+		$AnimatedSprite/Area2D/CollisionShape2D.disabled = false
 	else:
 		$AnimatedSprite.visible = false
 		$AnimatedSprite.play("exhaust_full")
+		$AnimatedSprite/Area2D/CollisionShape2D.disabled = true
 		
 	rotation_direction = 0
 	
@@ -133,3 +135,7 @@ func _on_Forcefield_Timer_timeout():
 	$Animated_Forcefield.visible = false
 	$Animated_Forcefield2.stop()
 	$Animated_Forcefield2.visible = false
+
+
+func _on_Area2D_body_entered(body: Node) -> void:
+	print("collided")
