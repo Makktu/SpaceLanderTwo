@@ -3,7 +3,9 @@ extends CanvasLayer
 var game_paused = false
 
 func _ready():
-	pass
+	if !$"/root/Global".music_on:
+		$MusicToggle.text = "music_OFF"
+		
 
 
 func _on_PauseButton_pressed():
@@ -41,12 +43,10 @@ func _on_DamageToggle_pressed():
 
 
 func _on_MusicToggle_pressed():
-#	$"/root/Global".music_on = !$"/root/Global".music_on
 	if !$"/root/Global".music_on:
 		$"/root/Global".music_on = true
 		$MusicToggle.text = "music_ON"
 		$"/root/Global".start_the_music()
-
 	else:
 		$"/root/Global".music_on = false
 		$MusicToggle.text = "music_OFF"

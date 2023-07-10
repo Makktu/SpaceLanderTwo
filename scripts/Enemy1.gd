@@ -45,12 +45,15 @@ func _on_ExtinctionTimer_timeout():
 		# is the value for when the explosion affects the player
 		$"/root/Global".taking_damage = true
 	yield($explosion, "animation_finished")
+	# calc random value for damage based on proximity
+	print("<<<", the_player.shields)
+	if distance_from_player > 99 and distance_from_player <= 175:
+		the_player.shields -= RandomNumberGenerator.new().randf_range(4.0, 8.0)
+	else:
+		if distance_from_player <= 100:
+			the_player.shields -= RandomNumberGenerator.new().randf_range(8.0, 12.0)
+	print(">>>", the_player.shields)		
 	queue_free()
-	
-#
-#func _on_velocity_computed(velocity):
-#	print("???")
-#	pass
 	
 
 func _on_NavTimer_timeout() -> void:

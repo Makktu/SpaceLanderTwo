@@ -9,17 +9,10 @@ var swipe_down_released = false
 var swipe_up_released = false
 var swipe_left_released = false
 var swipe_right_released = false
-
 var game_paused : bool = false
 var input_vector : Vector2
 var velocity : Vector2
-
 var rotation_direction: int
-
-#export (int) var acceleration = 100 or 25?
-#export (int) var max_speed = 200 or 40?
-#export (int) var gravity = 5 or 3?
-#export (float) var rotation_speed = 2.5
 
 export (int) var acceleration = 60 # 30
 export (int) var max_speed = 400 # 50
@@ -34,10 +27,10 @@ var shields = 100
 
 
 func _physics_process(delta):
-	if $"/root/Global".in_gravity_trap:
-		gravity = $"/root/Global".changed_gravity
-	else:
-		gravity = $"/root/Global".world_gravity
+#	if $"/root/Global".in_gravity_trap:
+#		gravity = $"/root/Global".changed_gravity
+#	else:
+#		gravity = $"/root/Global".world_gravity
 	
 	input_vector.x = Input.get_action_strength("thrust")
 	
@@ -47,11 +40,9 @@ func _physics_process(delta):
 	if Input.get_action_strength("thrust") || swipe_up:
 		$AnimatedSprite.visible = true
 		$AnimatedSprite.play("exhaust_full")
-		$AnimatedSprite/Area2D/CollisionShape2D.disabled = false
 	else:
 		$AnimatedSprite.visible = false
 		$AnimatedSprite.play("exhaust_full")
-		$AnimatedSprite/Area2D/CollisionShape2D.disabled = true
 		
 	rotation_direction = 0
 	
@@ -82,9 +73,10 @@ func _physics_process(delta):
 			return
 		velocity.y = -velocity.y * 1.35
 		velocity.x = -velocity.x * 1.35
-		shields -= 10
-#		$Shields.text = String(shields)
-#		$Shields.visible = true
+		# deduct shields random low value for any collision -- basic damage for every collision -- any enemy action inflicts extra damage
+		shields -= int(rand_range(4, 11))
+		$Shields.text = String(shields)
+		$Shields.visible = true
 		if $"/root/Global".taking_damage:
 			shields -= 10
 			print("DOUBLE DAMAGE!")
@@ -135,7 +127,3 @@ func _on_Forcefield_Timer_timeout():
 	$Animated_Forcefield.visible = false
 	$Animated_Forcefield2.stop()
 	$Animated_Forcefield2.visible = false
-
-
-func _on_Area2D_body_entered(body: Node) -> void:
-	print("collided")

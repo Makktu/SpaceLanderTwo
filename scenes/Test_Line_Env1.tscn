@@ -62,12 +62,11 @@ scale = Vector2( 1.5, 1.5 )
 texture = ExtResource( 1 )
 
 [node name="MistHeavy" parent="." instance=ExtResource( 2 )]
-visible = false
-modulate = Color( 1, 1, 1, 0.854902 )
+modulate = Color( 1, 1, 1, 0.784314 )
 position = Vector2( -13280, -4651 )
 
 [node name="MistHeavy2" parent="." instance=ExtResource( 2 )]
-modulate = Color( 1, 1, 1, 0.741176 )
+modulate = Color( 1, 1, 1, 0.0392157 )
 position = Vector2( 1894, -4676 )
 script = SubResource( 4 )
 
@@ -277,12 +276,6 @@ z_index = -100
 [node name="Barrier" parent="." instance=ExtResource( 3 )]
 modulate = Color( 1, 0.537255, 0, 1 )
 position = Vector2( 1691, 4057 )
-rotation = -0.32173
-scale = Vector2( 0.7, 0.2 )
-
-[node name="Barrier3" parent="." instance=ExtResource( 3 )]
-modulate = Color( 1, 0.537255, 0, 1 )
-position = Vector2( 151, 1310 )
 rotation = -0.32173
 scale = Vector2( 0.7, 0.2 )
 

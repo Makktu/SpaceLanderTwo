@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=2]
+[gd_scene load_steps=50 format=2]
 
 [ext_resource path="res://assets/graphics/playerShip3_green.png" type="Texture" id=1]
 [ext_resource path="res://scripts/player.gd" type="Script" id=2]
@@ -37,7 +37,6 @@
 [ext_resource path="res://scripts/TouchScreenControls.gd" type="Script" id=35]
 [ext_resource path="res://assets/animations/shield.png" type="Texture" id=36]
 [ext_resource path="res://themes/spacelander_font.tres" type="Theme" id=37]
-[ext_resource path="res://scenes/AnimatedSprite.gd" type="Script" id=38]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -46,9 +45,6 @@ animations = [ {
 "name": "exhaust_full",
 "speed": 15.0
 } ]
-
-[sub_resource type="RectangleShape2D" id=13]
-extents = Vector2( 125, 5.5 )
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 300, 300 )
@@ -135,15 +131,6 @@ z_index = -50
 frames = SubResource( 1 )
 animation = "exhaust_full"
 frame = 25
-script = ExtResource( 38 )
-
-[node name="Area2D" type="Area2D" parent="AnimatedSprite"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite/Area2D"]
-position = Vector2( -15.7142, 2.5 )
-scale = Vector2( 1.42857, 2.5 )
-shape = SubResource( 13 )
-disabled = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
@@ -193,5 +180,4 @@ rect_scale = Vector2( 0.2, 0.2 )
 theme = ExtResource( 37 )
 text = "shields"
 
-[connection signal="body_entered" from="AnimatedSprite/Area2D" to="." method="_on_Area2D_body_entered"]
 [connection signal="timeout" from="Forcefield_Timer" to="." method="_on_Forcefield_Timer_timeout"]
