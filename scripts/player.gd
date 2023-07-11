@@ -82,16 +82,11 @@ func _physics_process(delta):
 			print("DOUBLE DAMAGE!")
 			$"/root/Global".taking_damage = false
 		print("DAMAGE", " >> SHIELDS: ", shields)
-		if shields <= 20:
-			$LowForcefield.visible = true
-			$LowForcefield.play("low_shields")
-			$Forcefield_Timer.start()
-		else:
-			$Animated_Forcefield.visible = true
-			$Animated_Forcefield2.visible = true
-			$Animated_Forcefield.play("forcefield")
-			$Animated_Forcefield2.play("forcefield")
-			$Forcefield_Timer.start()
+		$Animated_Forcefield.visible = true
+		$Animated_Forcefield2.visible = true
+		$Animated_Forcefield.play("forcefield")
+		$Animated_Forcefield2.play("forcefield")
+		$Forcefield_Timer.start()
 		if shields <= 0:
 			$"/root/Global".pause_or_game_over("game_over")
 		
@@ -121,9 +116,7 @@ func _input(event):
 
 
 func _on_Forcefield_Timer_timeout():
-	$LowForcefield.stop()
-	$LowForcefield.visible = false
-	$Animated_Forcefield.stop()
-	$Animated_Forcefield.visible = false
-	$Animated_Forcefield2.stop()
-	$Animated_Forcefield2.visible = false
+		$Animated_Forcefield.stop()
+		$Animated_Forcefield.visible = false
+		$Animated_Forcefield2.stop()
+		$Animated_Forcefield2.visible = false
