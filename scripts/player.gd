@@ -87,6 +87,8 @@ func _physics_process(delta):
 		$Animated_Forcefield.play("forcefield")
 		$Animated_Forcefield2.play("forcefield")
 		$Forcefield_Timer.start()
+		if shields <= 80:
+			$CriticalDamageAnimation.play("critical")
 		if shields <= 0:
 			$"/root/Global".pause_or_game_over("game_over")
 		
