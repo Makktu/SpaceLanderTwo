@@ -75,19 +75,22 @@ func _physics_process(delta):
 		velocity.x = -velocity.x * 1.35
 		# deduct shields random low value for any collision -- basic damage for every collision -- any enemy action inflicts extra damage
 		shields -= int(rand_range(4, 11))
-		$Shields.text = String(shields)
-		$Shields.visible = true
+#		$Shields.text = String(shields)
+#		$Shields.visible = true
 		if $"/root/Global".taking_damage:
 			shields -= 10
 			print("DOUBLE DAMAGE!")
 			$"/root/Global".taking_damage = false
 		print("DAMAGE", " >> SHIELDS: ", shields)
+		$SlightDamageAnimation.play("slight")
+		yield($SlightDamageAnimation, "animation_finished")
+		$SlightDamageAnimation.play("RESET")
 		$Animated_Forcefield.visible = true
 		$Animated_Forcefield2.visible = true
 		$Animated_Forcefield.play("forcefield")
 		$Animated_Forcefield2.play("forcefield")
 		$Forcefield_Timer.start()
-		if shields <= 80:
+		if shields <= 15:
 			$CriticalDamageAnimation.play("critical")
 		if shields <= 0:
 			$"/root/Global".pause_or_game_over("game_over")
