@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/RippleEffect.mp3-9c433e5c9a63f35661ea047db8632f86.mp3str"
+
+[deps]
+
+source_file="res://assets/music/RippleEffect.mp3"
+dest_files=[ "res://.import/RippleEffect.mp3-9c433e5c9a63f35661ea047db8632f86.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

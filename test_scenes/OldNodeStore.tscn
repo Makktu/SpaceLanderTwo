@@ -1,0 +1,107 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scenes/decor_only/TowerShip.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/EnergyPickup.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/Enemy2_Sentinel.tscn" type="PackedScene" id=3]
+
+[node name="OldNodeStore" type="Node2D"]
+
+[node name="TowerShips" type="Node2D" parent="."]
+
+[node name="TowerShip" parent="TowerShips" instance=ExtResource( 1 )]
+modulate = Color( 1, 1, 1, 0.423529 )
+position = Vector2( -1070, 5825 )
+scale = Vector2( 0.8, 3 )
+z_index = 20
+z_as_relative = false
+
+[node name="TowerShip2" parent="TowerShips" instance=ExtResource( 1 )]
+modulate = Color( 1, 1, 1, 0.423529 )
+position = Vector2( 11423, 4730 )
+rotation = -0.138922
+scale = Vector2( 0.8, 3 )
+z_index = 20
+z_as_relative = false
+
+[node name="TowerShip3" parent="TowerShips" instance=ExtResource( 1 )]
+modulate = Color( 1, 1, 1, 0.423529 )
+position = Vector2( 4943, 12073 )
+rotation = 1.5708
+scale = Vector2( 1, 2 )
+z_index = 20
+z_as_relative = false
+
+[node name="TowerShip4" parent="TowerShips" instance=ExtResource( 1 )]
+modulate = Color( 1, 1, 1, 0.172549 )
+position = Vector2( 620, 6153 )
+rotation = 0.0138321
+scale = Vector2( 0.400542, 1.24 )
+z_index = 20
+z_as_relative = false
+
+[node name="EnergyPickups" type="Node2D" parent="."]
+__meta__ = {
+"_editor_description_": "collection of energy pickups"
+}
+
+[node name="EnergyPickup" parent="EnergyPickups" instance=ExtResource( 2 )]
+position = Vector2( 188, 4613 )
+scale = Vector2( 3, 3 )
+
+[node name="EnergyPickup2" parent="EnergyPickups" instance=ExtResource( 2 )]
+position = Vector2( 859, 4144 )
+scale = Vector2( 3, 3 )
+
+[node name="EnergyPickup3" parent="EnergyPickups" instance=ExtResource( 2 )]
+position = Vector2( 2317, 3325 )
+scale = Vector2( 3, 3 )
+
+[node name="EnergyPickup4" parent="EnergyPickups" instance=ExtResource( 2 )]
+position = Vector2( 5293, 4437 )
+scale = Vector2( 3, 3 )
+
+[node name="Sentinels" type="Node2D" parent="."]
+
+[node name="Enemy2_Sentinel" parent="Sentinels" instance=ExtResource( 3 )]
+position = Vector2( -239, 4714 )
+rotation = 0.0545049
+
+[node name="Enemy2_Sentinel2" parent="Sentinels" instance=ExtResource( 3 )]
+position = Vector2( 899, 1241 )
+rotation = 0.0545049
+
+[node name="Enemy2_Sentinel3" parent="Sentinels" instance=ExtResource( 3 )]
+position = Vector2( 1198, 10672 )
+rotation = 0.0545049
+
+[node name="Enemy2_Sentinel4" parent="Sentinels" instance=ExtResource( 3 )]
+position = Vector2( 2787, 8748 )
+rotation = 0.0545049
+
+[node name="Enemy2_Sentinel5" parent="Sentinels" instance=ExtResource( 3 )]
+position = Vector2( 3166, 10207 )
+rotation = 0.0545049
+
+[node name="Enemy2_Sentinel6" parent="Sentinels" instance=ExtResource( 3 )]
+position = Vector2( 2009, 6304 )
+rotation = 0.0545049
+
+[node name="Enemy2_Sentinel7" parent="Sentinels" instance=ExtResource( 3 )]
+position = Vector2( 2744, 3536 )
+rotation = 0.0545049
+
+[node name="Enemy2_Sentinel8" parent="Sentinels" instance=ExtResource( 3 )]
+position = Vector2( 2290, 2650 )
+rotation = 0.0545049
+
+[node name="Enemy2_Sentinel9" parent="Sentinels" instance=ExtResource( 3 )]
+position = Vector2( 6009, 3861 )
+rotation = 0.0545049
+
+[node name="Enemy2_Sentinel10" parent="Sentinels" instance=ExtResource( 3 )]
+position = Vector2( 8161, 4639 )
+rotation = 0.0545049
+
+[node name="Enemy2_Sentinel11" parent="Sentinels" instance=ExtResource( 3 )]
+position = Vector2( 10356, 3386 )
+rotation = 0.0545049

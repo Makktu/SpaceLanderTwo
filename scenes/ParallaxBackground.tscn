@@ -1,0 +1,68 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://assets/graphics/Ruined_Moon_1.png" type="Texture" id=1]
+[ext_resource path="res://assets/graphics/layer0_starfield.png" type="Texture" id=2]
+[ext_resource path="res://assets/graphics/placeholder_sun.png" type="Texture" id=3]
+[ext_resource path="res://scenes/decor_only/NewTower1.tscn" type="PackedScene" id=4]
+
+[node name="ParallaxBackground" type="ParallaxBackground"]
+scroll_ignore_camera_zoom = true
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+motion_scale = Vector2( 0.1, 0.1 )
+motion_mirroring = Vector2( 2540, 2540 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxLayer"]
+texture = ExtResource( 2 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 2540, 2540 )
+
+[node name="Sun" type="ParallaxLayer" parent="."]
+modulate = Color( 0.756863, 0.305882, 0.305882, 1 )
+position = Vector2( 123, -27 )
+motion_scale = Vector2( 0.2, 0.2 )
+motion_offset = Vector2( 100, 300 )
+motion_mirroring = Vector2( 12000, 12000 )
+
+[node name="Sprite" type="Sprite" parent="Sun"]
+position = Vector2( 528, 1908 )
+rotation = -1.09521
+texture = ExtResource( 3 )
+
+[node name="RuinedMoon" type="ParallaxLayer" parent="."]
+motion_scale = Vector2( 0.3, 0.3 )
+motion_offset = Vector2( 100, 300 )
+motion_mirroring = Vector2( 10000, 10000 )
+
+[node name="Sprite" type="Sprite" parent="RuinedMoon"]
+modulate = Color( 0.117647, 0.00784314, 0.00784314, 1 )
+position = Vector2( 922, 2200 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 2540, 2540 )
+
+[node name="MiscDecor" type="ParallaxLayer" parent="."]
+motion_scale = Vector2( 0.5, 0.5 )
+motion_offset = Vector2( 100, 300 )
+motion_mirroring = Vector2( 10000, 10000 )
+
+[node name="NewTower1" parent="MiscDecor" instance=ExtResource( 4 )]
+modulate = Color( 0.219608, 0.580392, 0.196078, 1 )
+position = Vector2( 731, 6718 )
+scale = Vector2( 0.5, 0.5 )
+z_index = -100
+
+[node name="NewTower2" parent="MiscDecor" instance=ExtResource( 4 )]
+modulate = Color( 0.129412, 0.109804, 0.101961, 1 )
+position = Vector2( 567, 6599 )
+scale = Vector2( 0.5, 0.5 )
+z_index = -100
+
+[node name="NewTower3" parent="MiscDecor" instance=ExtResource( 4 )]
+modulate = Color( 0.129412, 0.109804, 0.101961, 1 )
+position = Vector2( 935, 6659 )
+scale = Vector2( 0.5, 0.5 )
+z_index = -100

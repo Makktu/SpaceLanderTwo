@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/LeavingEarth.mp3-2d2fa4a221282ecb1ef04d1d3cb625fa.mp3str"
+
+[deps]
+
+source_file="res://assets/music/LeavingEarth.mp3"
+dest_files=[ "res://.import/LeavingEarth.mp3-2d2fa4a221282ecb1ef04d1d3cb625fa.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

@@ -1,0 +1,145 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://themes/spacelander_font.tres" type="Theme" id=1]
+[ext_resource path="res://assets/fonts/Stardate81316-aolE.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://scripts/Button.gd" type="Script" id=3]
+
+[sub_resource type="DynamicFont" id=3]
+size = 85
+extra_spacing_top = 4
+extra_spacing_bottom = 4
+extra_spacing_char = 1
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=2]
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 140
+extra_spacing_char = 1
+font_data = ExtResource( 2 )
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+
+[sub_resource type="Theme" id=6]
+Button/colors/font_color = Color( 0.88, 0.88, 0.88, 1 )
+Button/colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.2 )
+Button/colors/font_color_focus = Color( 0.94, 0.94, 0.94, 1 )
+Button/colors/font_color_hover = Color( 0.94, 0.94, 0.94, 1 )
+Button/colors/font_color_pressed = Color( 1, 1, 1, 1 )
+Button/constants/hseparation = 2
+Button/fonts/font = SubResource( 3 )
+Button/styles/disabled = null
+Button/styles/focus = null
+Button/styles/hover = null
+Button/styles/normal = null
+Button/styles/pressed = null
+Fonts/fonts/large = SubResource( 1 )
+Fonts/fonts/normal = SubResource( 2 )
+Label/fonts/font = SubResource( 4 )
+Label/styles/normal = SubResource( 5 )
+
+[sub_resource type="StyleBoxFlat" id=7]
+bg_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="StyleBoxFlat" id=8]
+bg_color = Color( 0.0313726, 0.215686, 0.0156863, 1 )
+
+[sub_resource type="Animation" id=9]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Label:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=10]
+resource_name = "glowtext"
+length = 4.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Label:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2, 4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.207843 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[node name="TutorialLayer" type="CanvasLayer"]
+
+[node name="Label" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -326.0
+margin_top = -493.0
+margin_right = 403.0
+margin_bottom = -214.0
+rect_scale = Vector2( 0.9, 0.9 )
+theme = SubResource( 6 )
+custom_colors/font_color = Color( 0.580392, 0.972549, 0.462745, 1 )
+custom_colors/font_outline_modulate = Color( 0.898039, 0.945098, 0.945098, 1 )
+custom_styles/normal = SubResource( 7 )
+text = "Swipe UP
+to fire weapon !"
+align = 1
+valign = 1
+
+[node name="Label2" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -226.0
+margin_top = 205.0
+margin_right = 964.0
+margin_bottom = 907.0
+rect_scale = Vector2( 0.4, 0.4 )
+theme = SubResource( 6 )
+custom_colors/font_color = Color( 0.580392, 0.972549, 0.462745, 1 )
+custom_colors/font_outline_modulate = Color( 0.898039, 0.945098, 0.945098, 1 )
+custom_styles/normal = SubResource( 7 )
+text = "1 use per pickup.
+You don't know when
+or where you'll find
+another weapon.
+Deploy them carefully..."
+align = 1
+valign = 1
+
+[node name="Button" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -111.0
+margin_top = -143.0
+margin_right = 100.0
+margin_bottom = -45.0
+theme = ExtResource( 1 )
+custom_styles/normal = SubResource( 8 )
+text = "Resume"
+script = ExtResource( 3 )
+
+[node name="TutorialAnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 9 )
+anims/glowtext = SubResource( 10 )
+
+[connection signal="pressed" from="Button" to="Button" method="_on_Button_pressed"]

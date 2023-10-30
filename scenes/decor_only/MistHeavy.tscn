@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scripts/MistHeavy.gd" type="Script" id=1]
+[ext_resource path="res://assets/graphics/fog01.png" type="Texture" id=2]
+[ext_resource path="res://assets/graphics/Mist_1.png" type="Texture" id=3]
+
+[node name="MistHeavy" type="Node2D"]
+position = Vector2( 13726, 8438 )
+script = ExtResource( 1 )
+
+[node name="Mist" type="Sprite" parent="."]
+visible = false
+modulate = Color( 0.054902, 0.454902, 0.105882, 0.486275 )
+self_modulate = Color( 0, 1, 0.133333, 1 )
+position = Vector2( 1611, 2320 )
+scale = Vector2( 64.2813, 103.082 )
+z_index = -100
+texture = ExtResource( 2 )
+
+[node name="MoreMist" type="Sprite" parent="."]
+modulate = Color( 0.0862745, 0.968627, 0.101961, 0.392157 )
+position = Vector2( -4111.5, 5702 )
+scale = Vector2( 72.9541, 401.939 )
+texture = ExtResource( 3 )

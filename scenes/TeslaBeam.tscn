@@ -1,0 +1,113 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://scripts/TeslaBeam.gd" type="Script" id=1]
+[ext_resource path="res://assets/graphics/spark_06_rotated.png" type="Texture" id=2]
+[ext_resource path="res://assets/graphics/spark_01.png" type="Texture" id=3]
+[ext_resource path="res://assets/sfx/sparking.mp3" type="AudioStream" id=4]
+[ext_resource path="res://assets/graphics/tesla_emitter3.png" type="Texture" id=5]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+
+void fragment() 
+{
+	vec2 uv = vec2(UV.x - sin(TIME * 80.0) * 0.1, UV.y - sin(TIME * 50.0) * 0.02);
+	COLOR = texture(TEXTURE, uv);
+}"
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
+
+[sub_resource type="Shader" id=5]
+code = "shader_type canvas_item;
+
+void vertex() {
+	VERTEX.y += sin(TIME * 80.0) * 200.0 * (UV.x - 1.0);
+}"
+
+[sub_resource type="ShaderMaterial" id=4]
+shader = SubResource( 5 )
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 10, 18 )
+
+[node name="TeslaBeam" type="RayCast2D"]
+modulate = Color( 0.980392, 0.988235, 0.980392, 1 )
+enabled = true
+cast_to = Vector2( 100, 0 )
+collision_mask = 2
+collide_with_areas = true
+script = ExtResource( 1 )
+
+[node name="Line2D" type="Line2D" parent="."]
+visible = false
+modulate = Color( 12, 2, 3, 1 )
+material = SubResource( 2 )
+points = PoolVector2Array( 0, 0, 80, 0 )
+width = 150.0
+default_color = Color( 0.964706, 0.968627, 0.980392, 1 )
+texture = ExtResource( 2 )
+texture_mode = 1
+
+[node name="end" type="Area2D" parent="."]
+visible = false
+position = Vector2( 70, 0 )
+
+[node name="Sprite" type="Sprite" parent="end"]
+material = SubResource( 4 )
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 3 )
+
+[node name="Sprite2" type="Sprite" parent="end"]
+material = SubResource( 4 )
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 3 )
+flip_v = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="end"]
+position = Vector2( 5, 0 )
+shape = SubResource( 6 )
+
+[node name="starting_spark" type="Node2D" parent="."]
+position = Vector2( 0, -1 )
+scale = Vector2( 0.2, 0.7 )
+
+[node name="Sprite" type="Sprite" parent="starting_spark"]
+material = SubResource( 4 )
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 3 )
+
+[node name="Sprite2" type="Sprite" parent="starting_spark"]
+material = SubResource( 4 )
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 3 )
+flip_v = true
+
+[node name="Sparking" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 4 )
+volume_db = -5.0
+
+[node name="FiringTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[node name="HidingTimer2" type="Timer" parent="."]
+wait_time = 20.0
+one_shot = true
+
+[node name="testla_emitter" type="Sprite" parent="."]
+modulate = Color( 0.858824, 0.976471, 0.0196078, 1 )
+position = Vector2( -7, 0 )
+rotation = 1.5708
+scale = Vector2( 0.6, 0.5 )
+texture = ExtResource( 5 )
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+visible = false
+position = Vector2( 109.5, -9.53674e-06 )
+scale = Vector2( 21.05, 10.5 )
+
+[connection signal="timeout" from="FiringTimer" to="." method="_on_FiringTimer_timeout"]
+[connection signal="timeout" from="HidingTimer2" to="." method="_on_HidingTimer2_timeout"]
+[connection signal="screen_entered" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_entered"]
+[connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]

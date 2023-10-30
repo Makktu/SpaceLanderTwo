@@ -1,0 +1,21 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://scripts/Global.gd" type="Script" id=1]
+[ext_resource path="res://scenes/MusicManager.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/GameOverLayer.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/TutorialLayer.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/DisplayEnergy.tscn" type="PackedScene" id=5]
+
+[node name="Global" type="Node2D"]
+pause_mode = 2
+script = ExtResource( 1 )
+
+[node name="MusicManager" parent="." instance=ExtResource( 2 )]
+
+[node name="GameOverLayer" parent="." instance=ExtResource( 3 )]
+visible = false
+
+[node name="TutorialLayer" parent="." instance=ExtResource( 4 )]
+visible = false
+
+[node name="DisplayEnergy" parent="." instance=ExtResource( 5 )]

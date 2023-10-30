@@ -1,0 +1,151 @@
+[gd_scene load_steps=31 format=2]
+
+[ext_resource path="res://scripts/Lightning_X.gd" type="Script" id=1]
+[ext_resource path="res://assets/animations/lightning_flash/trace_02.png" type="Texture" id=2]
+[ext_resource path="res://assets/animations/lightning_flash/trace_05.png" type="Texture" id=3]
+[ext_resource path="res://assets/animations/lightning_flash/trace_04.png" type="Texture" id=4]
+[ext_resource path="res://assets/animations/lightning_flash/trace_03.png" type="Texture" id=5]
+[ext_resource path="res://assets/animations/lightning_flash/trace_01.png" type="Texture" id=6]
+[ext_resource path="res://assets/animations/star_flash/star_02.png" type="Texture" id=7]
+[ext_resource path="res://assets/animations/star_flash/star_09.png" type="Texture" id=8]
+[ext_resource path="res://assets/animations/star_flash/star_03.png" type="Texture" id=9]
+[ext_resource path="res://assets/animations/star_flash/star_04.png" type="Texture" id=10]
+[ext_resource path="res://assets/animations/star_flash/star_05.png" type="Texture" id=11]
+[ext_resource path="res://assets/animations/star_flash/star_01.png" type="Texture" id=12]
+[ext_resource path="res://assets/animations/star_flash/star_06.png" type="Texture" id=13]
+[ext_resource path="res://assets/animations/star_flash/star_07.png" type="Texture" id=14]
+[ext_resource path="res://assets/animations/star_flash/star_08.png" type="Texture" id=15]
+[ext_resource path="res://assets/animations/Explosion.png" type="Texture" id=16]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 6 ), ExtResource( 2 ), ExtResource( 5 ), ExtResource( 4 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "flash",
+"speed": 25.0
+}, {
+"frames": [ ExtResource( 12 ), ExtResource( 7 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 8 ) ],
+"loop": true,
+"name": "star",
+"speed": 15.0
+} ]
+
+[sub_resource type="AtlasTexture" id=3]
+flags = 4
+atlas = ExtResource( 16 )
+region = Rect2( 0, 0, 96, 96 )
+
+[sub_resource type="AtlasTexture" id=4]
+flags = 4
+atlas = ExtResource( 16 )
+region = Rect2( 96, 0, 96, 96 )
+
+[sub_resource type="AtlasTexture" id=5]
+flags = 4
+atlas = ExtResource( 16 )
+region = Rect2( 192, 0, 96, 96 )
+
+[sub_resource type="AtlasTexture" id=6]
+flags = 4
+atlas = ExtResource( 16 )
+region = Rect2( 288, 0, 96, 96 )
+
+[sub_resource type="AtlasTexture" id=7]
+flags = 4
+atlas = ExtResource( 16 )
+region = Rect2( 384, 0, 96, 96 )
+
+[sub_resource type="AtlasTexture" id=8]
+flags = 4
+atlas = ExtResource( 16 )
+region = Rect2( 480, 0, 96, 96 )
+
+[sub_resource type="AtlasTexture" id=9]
+flags = 4
+atlas = ExtResource( 16 )
+region = Rect2( 576, 0, 96, 96 )
+
+[sub_resource type="AtlasTexture" id=10]
+flags = 4
+atlas = ExtResource( 16 )
+region = Rect2( 672, 0, 96, 96 )
+
+[sub_resource type="AtlasTexture" id=11]
+flags = 4
+atlas = ExtResource( 16 )
+region = Rect2( 768, 0, 96, 96 )
+
+[sub_resource type="AtlasTexture" id=12]
+flags = 4
+atlas = ExtResource( 16 )
+region = Rect2( 864, 0, 96, 96 )
+
+[sub_resource type="AtlasTexture" id=13]
+flags = 4
+atlas = ExtResource( 16 )
+region = Rect2( 960, 0, 96, 96 )
+
+[sub_resource type="AtlasTexture" id=14]
+flags = 4
+atlas = ExtResource( 16 )
+region = Rect2( 1056, 0, 96, 96 )
+
+[sub_resource type="SpriteFrames" id=15]
+animations = [ {
+"frames": [ SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ) ],
+"loop": true,
+"name": "explode",
+"speed": 15.0
+} ]
+
+[node name="Lightning_X" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="The_Effect" type="Node2D" parent="."]
+visible = false
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="The_Effect"]
+scale = Vector2( 1, 3 )
+frames = SubResource( 1 )
+animation = "star"
+frame = 2
+
+[node name="AnimatedSprite2" type="AnimatedSprite" parent="The_Effect"]
+rotation = 1.5708
+scale = Vector2( 1, 3 )
+frames = SubResource( 1 )
+animation = "flash"
+frame = 3
+
+[node name="AnimatedSprite3" type="AnimatedSprite" parent="The_Effect"]
+rotation = 0.785398
+scale = Vector2( 1, 3 )
+frames = SubResource( 1 )
+animation = "flash"
+frame = 1
+
+[node name="AnimatedSprite4" type="AnimatedSprite" parent="The_Effect"]
+rotation = -0.785398
+scale = Vector2( 1, 3 )
+frames = SubResource( 1 )
+animation = "flash"
+frame = 2
+
+[node name="explosion" type="AnimatedSprite" parent="The_Effect"]
+visible = false
+self_modulate = Color( 0.576471, 0.941176, 0.533333, 1 )
+scale = Vector2( 20, 20 )
+frames = SubResource( 15 )
+animation = "explode"
+speed_scale = 2.0
+
+[node name="LightningTimer" type="Timer" parent="."]
+wait_time = 0.6
+one_shot = true
+
+[node name="CooldownTimer" type="Timer" parent="."]
+wait_time = 4.0
+one_shot = true
+
+[connection signal="timeout" from="LightningTimer" to="." method="_on_LightningTimer_timeout"]
+[connection signal="timeout" from="CooldownTimer" to="." method="_on_CooldownTimer_timeout"]

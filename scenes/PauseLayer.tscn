@@ -1,0 +1,158 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://themes/spacelander_font.tres" type="Theme" id=1]
+[ext_resource path="res://scripts/PauseLayer.gd" type="Script" id=2]
+[ext_resource path="res://assets/fonts/Stardate81316-aolE.ttf" type="DynamicFontData" id=3]
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0, 0.109804, 1, 1 )
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0, 0.109804, 1, 1 )
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0, 0.109804, 1, 1 )
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 0, 0.109804, 1, 1 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 85
+extra_spacing_top = 4
+extra_spacing_bottom = 4
+extra_spacing_char = 1
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=7]
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=8]
+size = 140
+extra_spacing_char = 1
+font_data = ExtResource( 3 )
+
+[sub_resource type="StyleBoxFlat" id=9]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+
+[sub_resource type="Theme" id=10]
+Button/colors/font_color = Color( 0.88, 0.88, 0.88, 1 )
+Button/colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.2 )
+Button/colors/font_color_focus = Color( 0.94, 0.94, 0.94, 1 )
+Button/colors/font_color_hover = Color( 0.94, 0.94, 0.94, 1 )
+Button/colors/font_color_pressed = Color( 1, 1, 1, 1 )
+Button/constants/hseparation = 2
+Button/fonts/font = SubResource( 6 )
+Button/styles/disabled = null
+Button/styles/focus = null
+Button/styles/hover = null
+Button/styles/normal = null
+Button/styles/pressed = null
+Fonts/fonts/large = SubResource( 1 )
+Fonts/fonts/normal = SubResource( 7 )
+Label/fonts/font = SubResource( 8 )
+Label/styles/normal = SubResource( 9 )
+
+[sub_resource type="StyleBoxFlat" id=11]
+bg_color = Color( 0, 0.109804, 1, 1 )
+
+[sub_resource type="StyleBoxFlat" id=12]
+content_margin_left = 50.0
+content_margin_right = 50.0
+content_margin_top = 50.0
+content_margin_bottom = 50.0
+bg_color = Color( 0, 0, 0, 1 )
+
+[node name="PauseLayer" type="CanvasLayer"]
+pause_mode = 2
+script = ExtResource( 2 )
+
+[node name="PauseButton" type="Button" parent="."]
+modulate = Color( 1, 1, 1, 0.2 )
+margin_right = 39.0
+margin_bottom = 98.0
+rect_scale = Vector2( 0.8, 0.8 )
+theme = ExtResource( 1 )
+text = "debug"
+
+[node name="EnemiesToggle" type="Button" parent="."]
+visible = false
+margin_left = 1.0
+margin_top = 99.0
+margin_right = 312.0
+margin_bottom = 197.0
+theme = ExtResource( 1 )
+custom_styles/normal = SubResource( 2 )
+text = "enemies_ON"
+
+[node name="DamageToggle" type="Button" parent="."]
+visible = false
+margin_left = 1.0
+margin_top = 198.0
+margin_right = 296.0
+margin_bottom = 296.0
+theme = ExtResource( 1 )
+custom_styles/normal = SubResource( 3 )
+text = "damage_ON"
+
+[node name="FrameRateToggle" type="Button" parent="."]
+visible = false
+margin_left = 1.0
+margin_top = 297.0
+margin_right = 433.0
+margin_bottom = 395.0
+theme = ExtResource( 1 )
+custom_styles/normal = SubResource( 4 )
+text = "frame_rate_ON"
+
+[node name="MusicToggle" type="Button" parent="."]
+visible = false
+margin_top = 397.0
+margin_right = 190.0
+margin_bottom = 495.0
+theme = ExtResource( 1 )
+custom_styles/normal = SubResource( 5 )
+text = "music_ON"
+
+[node name="SfxToggle" type="Button" parent="."]
+visible = false
+margin_left = 2.0
+margin_top = 496.0
+margin_right = 241.0
+margin_bottom = 594.0
+theme = SubResource( 10 )
+custom_styles/normal = SubResource( 11 )
+text = "sfx_ON"
+
+[node name="Message" type="Label" parent="."]
+visible = false
+margin_left = 11.0
+margin_top = 1138.0
+margin_right = 2324.0
+margin_bottom = 1658.0
+rect_scale = Vector2( 0.25, 0.25 )
+theme = ExtResource( 1 )
+custom_colors/font_color = Color( 0.933333, 0.843137, 0.0235294, 1 )
+custom_styles/normal = SubResource( 12 )
+text = "SpaceLander2 is at an early stage of development.
+Many features are experimental and may not work
+as expected or at all."
+
+[node name="Frame_rate" type="Label" parent="."]
+modulate = Color( 1, 1, 1, 0.294118 )
+margin_left = 671.0
+margin_top = 6.00001
+margin_right = 818.0
+margin_bottom = 144.0
+rect_scale = Vector2( 0.3, 0.3 )
+theme = ExtResource( 1 )
+text = "000	"
+
+[connection signal="pressed" from="PauseButton" to="." method="_on_PauseButton_pressed"]
+[connection signal="pressed" from="EnemiesToggle" to="." method="_on_EnemiesToggle_pressed"]
+[connection signal="pressed" from="DamageToggle" to="." method="_on_DamageToggle_pressed"]
+[connection signal="pressed" from="FrameRateToggle" to="." method="_on_FrameRateToggle_pressed"]
+[connection signal="pressed" from="MusicToggle" to="." method="_on_MusicToggle_pressed"]
+[connection signal="pressed" from="SfxToggle" to="." method="_on_SfxToggle_pressed"]

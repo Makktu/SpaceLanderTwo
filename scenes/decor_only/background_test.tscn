@@ -1,0 +1,8 @@
+[gd_scene format=2]
+
+[node name="background_test" type="Node2D"]
+
+[node name="Line2D" type="Line2D" parent="."]
+points = PoolVector2Array( 29, 370, 246, 187, 302, 392, 490, 343, 542, 263, 559, 420, 653, 468, 659, 539, 670, 549, 705, 529, 700, 353, 680, 311, 679, 261, 727, 203, 848, 124, 1075, 148, 1155, 242, 1219, 330, 1282, 356, 1395, 336, 1470, 151 )
+width = 5.0
+default_color = Color( 0.419608, 1, 0.4, 1 )

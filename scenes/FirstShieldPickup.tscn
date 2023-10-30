@@ -1,0 +1,139 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://assets/graphics/shield_icon.png" type="Texture" id=1]
+
+[sub_resource type="GDScript" id=5]
+script/source = "extends Area2D
+
+var shield_on = false
+var lightning_on = false
+
+var testing = true
+
+func _ready() -> void:
+	# decide whether this pickup spot is going to be lightning or shield
+	if !$\"/root/Global\".first_shield_collected:
+		shield_on = true
+		$\"/root/Global\".first_shield_collected = true
+	elif !$\"/root/Global\".first_lightning_collected:
+		lightning_on = true
+		$\"/root/Global\".first_lightning_collected = true
+	deploy_pickup()
+	
+
+func deploy_pickup():
+	if $\"/root/Global\".first_shield_collected and 	$\"/root/Global\".first_lightning_collected:
+		if $\"/root/Global\".random_float_number(1,100) < 75:
+			shield_on = true
+		else:
+			lightning_on = true
+						
+	if shield_on:
+		$Shield.visible = true
+	else:
+		$Sprite.visible = true		
+	
+		
+	
+func _on_PickupSpot_body_entered(body):
+	if body.name == 'player' and visible:
+		$\"/root/Global\".shield_picked_up()
+		var spawn_time_now = $\"/root/Global\".random_float_number(100, 400)
+		$SpawnTimer.wait_time = spawn_time_now
+		$SpawnTimer.start()
+		$AnimationPlayer.play(\"fade\")
+		if shield_on and !$\"/root/Global\".player_shields_on:
+			$\"/root/Global\".player_shields_on = true
+		if lightning_on and !$\"/root/Global\".lightning_weapon_equipped:
+			$\"/root/Global\".lightning_weapon_equipped
+
+
+func _on_SpawnTimer_timeout():
+	# restore pickup
+	$AnimationPlayer.play_backwards(\"fade\")
+
+
+func _on_AnimationPlayer_animation_finished(anim_name):
+	visible = !visible
+
+
+func _on_VisibilityNotifier2D_screen_entered() -> void:
+	$Particles2D.emitting = true
+
+
+func _on_VisibilityNotifier2D_screen_exited() -> void:
+	$Particles2D.emitting = false
+
+
+func _on_DelayTimer_timeout() -> void:
+	$\"/root/Global\".pause_or_game_over(\"first_pickup\")
+	$\"/root/Global\".weapon_tutorial_done = true
+"
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 6.5, 19.5 )
+
+[sub_resource type="Animation" id=2]
+length = 0.001
+
+[sub_resource type="Animation" id=3]
+resource_name = "fade"
+
+[sub_resource type="ParticlesMaterial" id=4]
+emission_shape = 1
+emission_sphere_radius = 18.74
+flag_disable_z = true
+direction = Vector3( 1, 1, 0 )
+gravity = Vector3( 0, -1, 0 )
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+linear_accel = 100.0
+color = Color( 0.992157, 0.980392, 0.0196078, 1 )
+hue_variation = 0.1
+hue_variation_random = 0.3
+
+[node name="FirstShieldPickup" type="Area2D"]
+modulate = Color( 0.890196, 0.968627, 0.0392157, 1 )
+scale = Vector2( 1.2, 1.2 )
+script = SubResource( 5 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="SpawnTimer" type="Timer" parent="."]
+
+[node name="Shield" type="Sprite" parent="."]
+visible = false
+position = Vector2( 2.5, 4.16667 )
+scale = Vector2( 0.9, 0.9 )
+texture = ExtResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 1 )
+shape = SubResource( 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 2 )
+anims/fade = SubResource( 3 )
+
+[node name="Particles2D" type="Particles2D" parent="."]
+position = Vector2( 1, 17 )
+scale = Vector2( 1.2, 1.2 )
+emitting = false
+amount = 64
+process_material = SubResource( 4 )
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+position = Vector2( 18.5, 11 )
+scale = Vector2( 18.55, 26.1 )
+
+[node name="DelayTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="body_entered" from="." to="." method="_on_PickupSpot_body_entered"]
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_SpawnTimer_timeout"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+[connection signal="screen_entered" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_entered"]
+[connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
+[connection signal="timeout" from="DelayTimer" to="." method="_on_DelayTimer_timeout"]

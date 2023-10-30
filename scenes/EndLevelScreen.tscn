@@ -1,0 +1,33 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://themes/spacelander_font.tres" type="Theme" id=1]
+[ext_resource path="res://scripts/EndLevelScreen.gd" type="Script" id=2]
+
+[node name="EndLevelScreen" type="Control"]
+script = ExtResource( 2 )
+
+[node name="EndLevel" type="CenterContainer" parent="."]
+margin_right = 737.0
+margin_bottom = 138.0
+
+[node name="RichTextLabel" type="Label" parent="EndLevel"]
+margin_right = 737.0
+margin_bottom = 138.0
+theme = ExtResource( 1 )
+text = "Level 1 Complete"
+align = 1
+
+[node name="Buttons" type="CenterContainer" parent="."]
+margin_left = 223.0
+margin_top = 790.0
+margin_right = 514.0
+margin_bottom = 890.0
+
+[node name="Button" type="Button" parent="Buttons"]
+margin_top = 1.0
+margin_right = 291.0
+margin_bottom = 99.0
+theme = ExtResource( 1 )
+text = "MAIN MENU"
+
+[connection signal="pressed" from="Buttons/Button" to="." method="_on_Button_pressed"]

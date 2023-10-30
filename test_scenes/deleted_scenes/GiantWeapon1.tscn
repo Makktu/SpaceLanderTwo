@@ -1,0 +1,84 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://test_scenes/deleted_scenes/BarrierEmitter.tscn" type="PackedScene" id=1]
+[ext_resource path="res://test_scenes/deleted_scenes/Barrier.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scripts/GiantWeapon1.gd" type="Script" id=3]
+
+[sub_resource type="Animation" id=1]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "rotate_me_fast"
+length = 6.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 3, 6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 180.0, 360.0 ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "rotate_me_slow"
+length = 10.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 5, 10 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 180.0, 360.0 ]
+}
+
+[node name="GiantWeapon1" type="Node2D"]
+position = Vector2( 362, 702 )
+script = ExtResource( 3 )
+
+[node name="Barrier" parent="." instance=ExtResource( 2 )]
+modulate = Color( 0, 1, 0.439216, 1 )
+
+[node name="BarrierEmitter2" parent="." instance=ExtResource( 1 )]
+position = Vector2( -511, -7 )
+scale = Vector2( 3, 3 )
+
+[node name="BarrierEmitter3" parent="." instance=ExtResource( 1 )]
+position = Vector2( 511, 4 )
+rotation = 3.14159
+scale = Vector2( 3, 3 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 1 )
+anims/rotate_me_fast = SubResource( 3 )
+anims/rotate_me_slow = SubResource( 2 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+
+[node name="Timer2" type="Timer" parent="."]
+wait_time = 10.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="timeout" from="Timer2" to="." method="_on_Timer2_timeout"]

@@ -1,0 +1,104 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://scripts/BossLauncher.gd" type="Script" id=1]
+[ext_resource path="res://assets/animations/new_space_mines/spark_01.png" type="Texture" id=3]
+[ext_resource path="res://assets/animations/new_space_mines/spark_04.png" type="Texture" id=4]
+[ext_resource path="res://assets/animations/new_space_mines/spark_03.png" type="Texture" id=5]
+[ext_resource path="res://assets/animations/new_space_mines/spark_02.png" type="Texture" id=6]
+
+[sub_resource type="StreamTexture" id=5]
+flags = 4
+load_path = "res://.import/MinesLauncher-export.png-ea467b44f7f06b5415d4760972038cfb.stex"
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 1149.26
+
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "activation"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0.94902, 0.0313726, 0.0745098, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="SpriteFrames" id=4]
+animations = [ {
+"frames": [ ExtResource( 3 ), ExtResource( 6 ), ExtResource( 5 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "launching_sparky",
+"speed": 10.0
+} ]
+
+[node name="BossLauncher" type="Sprite"]
+scale = Vector2( 2, 2 )
+texture = SubResource( 5 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2( 4.5, -167 )
+scale = Vector2( 0.374371, 0.228436 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( 0, 118 )
+shape = SubResource( 1 )
+
+[node name="SpawnTimer" type="Timer" parent="."]
+wait_time = 12.0
+one_shot = true
+
+[node name="StopSpawnTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[node name="DormancyTimer" type="Timer" parent="."]
+wait_time = 15.0
+one_shot = true
+
+[node name="activation_animation" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 2 )
+anims/activation = SubResource( 3 )
+
+[node name="spawn_node" type="Node2D" parent="."]
+position = Vector2( 6, 156 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+visible = false
+modulate = Color( 0.992157, 0.984314, 0.447059, 1 )
+position = Vector2( 2, 115 )
+rotation = 3.14159
+scale = Vector2( 0.3, 0.2 )
+frames = SubResource( 4 )
+animation = "launching_sparky"
+frame = 1
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_SpawnTimer_timeout"]
+[connection signal="timeout" from="StopSpawnTimer" to="." method="_on_StopSpawnTimer_timeout"]
+[connection signal="timeout" from="DormancyTimer" to="." method="_on_DormancyTimer_timeout"]

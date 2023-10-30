@@ -1,0 +1,126 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://scripts/PickupSpot.gd" type="Script" id=1]
+[ext_resource path="res://assets/graphics/energy_pickup.png" type="Texture" id=2]
+[ext_resource path="res://assets/graphics/shield_icon.png" type="Texture" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 6.5, 19.5 )
+
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0.02125, 0.02125 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "fade"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.02125, 0.02125 ), Vector2( 0.09, 0.09 ) ]
+}
+
+[sub_resource type="ParticlesMaterial" id=4]
+emission_shape = 1
+emission_sphere_radius = 18.74
+flag_disable_z = true
+direction = Vector3( 1, 1, 0 )
+gravity = Vector3( 0, -1, 0 )
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+linear_accel = 100.0
+color = Color( 0.992157, 0.980392, 0.0196078, 1 )
+hue_variation = 0.1
+hue_variation_random = 0.3
+
+[node name="PickupSpot" type="Area2D"]
+modulate = Color( 0.890196, 0.968627, 0.0392157, 1 )
+scale = Vector2( 1.2, 1.2 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="SpawnTimer" type="Timer" parent="."]
+
+[node name="Sprite" type="Sprite" parent="."]
+visible = false
+scale = Vector2( 0.02125, 0.02125 )
+texture = ExtResource( 2 )
+
+[node name="Shield" type="Sprite" parent="."]
+visible = false
+position = Vector2( 2.5, 4.16667 )
+scale = Vector2( 0.9, 0.9 )
+texture = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 1 )
+shape = SubResource( 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 2 )
+anims/fade = SubResource( 3 )
+
+[node name="Particles2D" type="Particles2D" parent="."]
+position = Vector2( 1, 17 )
+scale = Vector2( 1.2, 1.2 )
+emitting = false
+amount = 64
+process_material = SubResource( 4 )
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+position = Vector2( 18.5, 11 )
+scale = Vector2( 18.55, 26.1 )
+
+[node name="DelayTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="body_entered" from="." to="." method="_on_PickupSpot_body_entered"]
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_SpawnTimer_timeout"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+[connection signal="screen_entered" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_entered"]
+[connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
+[connection signal="timeout" from="DelayTimer" to="." method="_on_DelayTimer_timeout"]
