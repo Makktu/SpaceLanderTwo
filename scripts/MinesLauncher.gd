@@ -9,7 +9,7 @@ var already_triggered = false
 var amount_spawned = 0
 var amount_to_be_spawned = 10
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if $SpawnTimer.time_left > 0:
 		$AnimatedSprite.scale.y += 0.00025
 

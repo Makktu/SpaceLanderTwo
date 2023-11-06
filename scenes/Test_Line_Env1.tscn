@@ -22,32 +22,33 @@
 
 [sub_resource type="Environment" id=6]
 background_mode = 4
-background_energy = 4.44
 ambient_light_color = Color( 0.360784, 0.94902, 0.0313726, 1 )
 fog_color = Color( 0.262745, 0.921569, 0.0823529, 1 )
 fog_sun_amount = 0.21
 fog_transmit_enabled = true
 fog_height_enabled = true
-auto_exposure_scale = 7.1
-auto_exposure_min_luma = 10.11
-auto_exposure_speed = 27.31
+tonemap_mode = 3
+auto_exposure_enabled = true
+auto_exposure_scale = 6.44
+auto_exposure_min_luma = 7.84
+auto_exposure_max_luma = 11.77
+auto_exposure_speed = 27.91
 dof_blur_far_distance = 61.44
 dof_blur_near_distance = 0.92
 dof_blur_near_transition = 1.68
 dof_blur_near_amount = 0.6
-glow_enabled = true
 glow_levels/4 = true
 glow_levels/5 = false
 glow_levels/6 = true
 glow_levels/7 = true
-glow_intensity = 0.73
-glow_strength = 0.33
+glow_intensity = 1.78
+glow_strength = 0.35
 glow_blend_mode = 0
 glow_high_quality = true
 adjustment_enabled = true
 adjustment_brightness = 1.12
-adjustment_contrast = 1.15
-adjustment_saturation = 1.96
+adjustment_contrast = 0.99
+adjustment_saturation = 1.43
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 338.532, 25.0674 )
@@ -896,7 +897,8 @@ scale = Vector2( 0.9, 0.9 )
 z_index = -10
 
 [node name="NewTower2" parent="." instance=ExtResource( 19 )]
-position = Vector2( 1106, 1765 )
+modulate = Color( 0.886275, 0.682353, 0.682353, 0.266667 )
+position = Vector2( 1055, 1815 )
 scale = Vector2( 0.9, 0.9 )
 z_index = -10
 

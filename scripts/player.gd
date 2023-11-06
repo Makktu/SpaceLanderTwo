@@ -26,9 +26,8 @@ var rotation_direction: int
 var acceleration = 25 #30
 var max_speed = 50
 var gravity = 0 #0 FOR FULL WEIGHTLESSNESS
-var rotation_speed = 2.1 #6
+var rotation_speed = 2.5 #6
 
-var critical_damage_state = false
 
 func _physics_process(delta):
 	# BOSS TENTACLE STRIKE LOGIC
@@ -68,6 +67,9 @@ func _physics_process(delta):
 	if Input.is_action_pressed("fire_bullets") and !player_is_shooting:
 		player_is_shooting = true
 		shoot_bullets()
+		
+	if Input.is_action_just_released("fire_bullets"):
+		player_is_shooting = false
 	
 	if Input.is_action_pressed("rotate_left") || swipe_right:
 		rotation_direction -= 1
@@ -157,14 +159,6 @@ func _on_Forcefield_Timer_timeout():
 		$Animated_Forcefield2.visible = false
 
 
-func _on_CriticalDamageAnimationTimer_timeout() -> void:
-	$CriticalDamageAnimation.play("critical")
-	$CriticalDamageAnimationTimer.start()
-
-
-func _on_CriticalDamageAnimation_animation_finished(anim_name: String) -> void:
-	$CriticalDamageAnimation.play("RESET")
-
 
 func _on_RechargeTimer_timeout():
 	$RechargingAnimatedSprite.visible = false
@@ -217,9 +211,8 @@ func shoot_bullets():
 	bullet_instance.global_rotation_degrees = rotation_degrees - 90
 	# the adding of the bullet to the scene
 	get_parent().add_child(bullet_instance)
-	$ShootingTimer.start()
+#	$ShootingTimer.start()
 	
-
-
+	
 func _on_ShootingTimer_timeout() -> void:
 	player_is_shooting = false

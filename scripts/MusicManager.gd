@@ -22,7 +22,7 @@ func _on_Track3_finished():
 
 func start_music():
 	if $"/root/Global".music_on:
-		$Track2.play()
+		$Track1.play()
 
 
 func stop_music():
