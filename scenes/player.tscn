@@ -181,6 +181,10 @@ scale = Vector2( 1.15248, 2.07578 )
 shape = SubResource( 2 )
 script = ExtResource( 35 )
 
+[node name="TapTimer" type="Timer" parent="Camera2D/TouchScreenControls"]
+wait_time = 0.4
+one_shot = true
+
 [node name="Animated_Forcefield" type="AnimatedSprite" parent="."]
 visible = false
 modulate = Color( 0.901961, 0.890196, 0.0431373, 1 )
@@ -276,6 +280,7 @@ one_shot = true
 stream = ExtResource( 49 )
 pitch_scale = 1.2
 
+[connection signal="double_tap" from="Camera2D/TouchScreenControls" to="." method="_on_TouchScreenControls_double_tap"]
 [connection signal="timeout" from="Forcefield_Timer" to="." method="_on_Forcefield_Timer_timeout"]
 [connection signal="timeout" from="SpinOutTimer" to="." method="_on_SpinOutTimer_timeout"]
 [connection signal="timeout" from="CameraZoomBackTimer" to="." method="_on_CameraZoomBackTimer_timeout"]

@@ -1,5 +1,7 @@
 extends CanvasLayer
 
+var shaken = 0
+
 func _ready() -> void:
 	show_lightning()
 	show_shield()
@@ -22,5 +24,10 @@ func hide_shield():
 	
 func shake_shield():
 	$AnimationPlayer.play("shake_shield")
-	
-	
+
+func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
+	if anim_name == "shake_shield" and shaken < 5:
+		shaken += 1
+		shake_shield()
+	else:
+		shaken = 0

@@ -36,6 +36,11 @@ var game_level = 0
 
 var player_hits = 0
 
+# variable controlling when the player will be encircled by enemies
+# (not built yet)
+var enemy_surround = false
+###################################################################
+
 
 
 func _ready():
@@ -128,9 +133,7 @@ func handle_pickups(item):
 	
 func player_damaged(how_badly):
 	player_hits += how_badly
-	if player_hits >= 10 and player_shields_on:
-		shield_used()
-	elif player_hits >= 10 and !player_shields_on:
+	if player_hits >= 10:
 		pause_or_game_over('game_over')
 	else:
 		$DisplayEnergy.shake_shield()

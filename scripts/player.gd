@@ -216,3 +216,7 @@ func shoot_bullets():
 	
 func _on_ShootingTimer_timeout() -> void:
 	player_is_shooting = false
+
+
+func _on_TouchScreenControls_double_tap() -> void:
+	shoot_bullets()
