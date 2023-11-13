@@ -7,7 +7,8 @@ onready var boss_enemy = preload("res://scenes/Enemy3_Boss.tscn")
 
 var already_triggered = false
 var amount_spawned = 0
-var amount_to_be_spawned = 10
+var amount_to_be_spawned
+var spawn_wait_time
 
 func _physics_process(_delta):
 	if $SpawnTimer.time_left > 0:
@@ -29,6 +30,9 @@ func _on_Area2D_body_entered(body):
 		return
 	if body.name == 'player' and !already_triggered:
 		already_triggered = true
+		amount_to_be_spawned = $"/root/Global".global_amount_to_be_spawned
+		spawn_wait_time = $"/root/Global".global_spawn_delay
+		$SpawnTimer.wait_time = spawn_wait_time
 		$AnimatedSprite.visible = true
 		$AnimatedSprite.play("launching_sparky")
 		$SpawnTimer.start()

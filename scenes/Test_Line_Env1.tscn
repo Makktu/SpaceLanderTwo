@@ -483,6 +483,26 @@ position = Vector2( 1477, 4977 )
 rotation = 0.266756
 z_index = -100
 
+[node name="MinesLauncher67" parent="MinesLaunchers" instance=ExtResource( 9 )]
+position = Vector2( 1606, 5230 )
+rotation = 2.11098
+z_index = -100
+
+[node name="MinesLauncher68" parent="MinesLaunchers" instance=ExtResource( 9 )]
+position = Vector2( 2354, 5103 )
+rotation = 4.26706
+z_index = -100
+
+[node name="MinesLauncher69" parent="MinesLaunchers" instance=ExtResource( 9 )]
+position = Vector2( 2525, 4887 )
+rotation = 6.57765
+z_index = -100
+
+[node name="MinesLauncher70" parent="MinesLaunchers" instance=ExtResource( 9 )]
+position = Vector2( 2325, 5445 )
+rotation = 5.16849
+z_index = -100
+
 [node name="MinesLauncher51" parent="MinesLaunchers" instance=ExtResource( 9 )]
 position = Vector2( 4219, 4383 )
 rotation = 0.789678

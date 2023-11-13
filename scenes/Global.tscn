@@ -19,3 +19,9 @@ visible = false
 visible = false
 
 [node name="DisplayEnergy" parent="." instance=ExtResource( 5 )]
+
+[node name="ResetTimer" type="Timer" parent="."]
+wait_time = 60.0
+one_shot = true
+
+[connection signal="timeout" from="ResetTimer" to="." method="_on_ResetTimer_timeout"]

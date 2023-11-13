@@ -39,6 +39,9 @@ var player_hits = 0
 # variable controlling when the player will be encircled by enemies
 # (not built yet)
 var enemy_surround = false
+var global_amount_to_be_spawned = 10
+var global_spawn_delay = 10
+var basic_enemy_speed = 150
 ###################################################################
 
 
@@ -150,3 +153,14 @@ func game_on(state):
 	else:
 		$DisplayEnergy.hide_lightning()
 		$DisplayEnergy.hide_shield()
+		
+		
+func reset_global_values():
+#	$ResetTimer.start()
+	pass
+
+
+func _on_ResetTimer_timeout():
+	global_amount_to_be_spawned = 10
+	global_spawn_delay = 10
+	basic_enemy_speed = 150

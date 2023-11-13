@@ -23,13 +23,17 @@ var rotation_direction: int
 
 # PLAYER CONTROLLER VARIABLES
 # PREVIOUS TEST VALUES COMMENTED TO SIDE
-var acceleration = 25 #30
-var max_speed = 50
+var acceleration = 35 #30
+var max_speed = 75
 var gravity = 0 #0 FOR FULL WEIGHTLESSNESS
-var rotation_speed = 2.5 #6
+var rotation_speed = 3 #6
 
 
 func _physics_process(delta):
+	
+	if $"/root/Global".enemy_surround:
+		surround_with_enemies()
+	
 	# BOSS TENTACLE STRIKE LOGIC
 	if $"/root/Global".tentacle_struck:
 		if $AnimatedSprite.visible:
@@ -220,3 +224,7 @@ func _on_ShootingTimer_timeout() -> void:
 
 func _on_TouchScreenControls_double_tap() -> void:
 	shoot_bullets()
+	
+func surround_with_enemies():
+	pass
+	# first, destroy all enemies currently in game (performance reasons)
