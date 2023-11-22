@@ -855,7 +855,7 @@ z_as_relative = false
 [node name="Building1" parent="." instance=ExtResource( 16 )]
 modulate = Color( 0.376471, 1, 0, 1 )
 position = Vector2( 1380, 1128 )
-rotation = 3.14159
+rotation = 0.0133588
 z_index = -40
 
 [node name="TeslaBeam" parent="Building1" instance=ExtResource( 18 )]
@@ -864,12 +864,12 @@ rotation = 1.5708
 
 [node name="Building2" parent="." instance=ExtResource( 16 )]
 position = Vector2( 1826, 766 )
-rotation = 3.14159
+rotation = 0.004879
 scale = Vector2( 2, 2 )
 z_index = -100
 
 [node name="ShimmeringBarrier" parent="Building2" instance=ExtResource( 13 )]
-position = Vector2( 1.44971, 1740.5 )
+position = Vector2( 3.40503, -1558.22 )
 scale = Vector2( 0.2, 5 )
 
 [node name="Building4" parent="." instance=ExtResource( 17 )]

@@ -3,7 +3,7 @@ extends Node2D
 onready var player_energy = 1000000
 
 
-var music_on = true
+var music_on = false
 
 var sound_effects_on = false
 
@@ -25,6 +25,7 @@ var lightning_weapon_equipped = true
 var lightning_weapon_active = false
 
 var player_shields_on = true
+var player_speed_boost = false
 
 var first_shield_collected = false
 var first_lightning_collected = false
@@ -38,10 +39,10 @@ var player_hits = 0
 
 # variable controlling when the player will be encircled by enemies
 # (not built yet)
-var enemy_surround = false
-var global_amount_to_be_spawned = 10
-var global_spawn_delay = 10
-var basic_enemy_speed = 150
+var enemy_surround = true
+var global_amount_to_be_spawned = 30
+var global_spawn_delay = 0.6
+var basic_enemy_speed = 250
 ###################################################################
 
 
@@ -113,6 +114,10 @@ func shield_used():
 	player_shields_on = false
 	
 func handle_pickups(item):
+	if item == 'speedup':
+		player_speed_boost = true
+		# add animation for this pickup
+	
 	if item == 'lightning':
 		if lightning_weapon_equipped:
 			# take no action if lightning already picked up

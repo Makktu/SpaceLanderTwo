@@ -1,9 +1,8 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://assets/graphics/Tower_half_3.png" type="Texture" id=1]
+[ext_resource path="res://assets/graphics/Sl2_Line_Draw1.png" type="Texture" id=1]
 
 [node name="Building1" type="Node2D"]
 
 [node name="Sprite" type="Sprite" parent="."]
-scale = Vector2( 0.3, 0.7 )
 texture = ExtResource( 1 )

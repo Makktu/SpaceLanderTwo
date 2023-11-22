@@ -23,13 +23,19 @@ var rotation_direction: int
 
 # PLAYER CONTROLLER VARIABLES
 # PREVIOUS TEST VALUES COMMENTED TO SIDE
-var acceleration = 35 #30
-var max_speed = 75
+var acceleration = 30 #30
+var max_speed = 70
 var gravity = 0 #0 FOR FULL WEIGHTLESSNESS
-var rotation_speed = 3 #6
+var rotation_speed = 4 #6
 
 
 func _physics_process(delta):
+	
+	if $"/root/Global".player_speed_boost:
+		$"/root/Global".player_speed_boost = false
+		acceleration += 15
+		max_speed += 25
+		rotation_speed += 4
 	
 	if $"/root/Global".enemy_surround:
 		surround_with_enemies()

@@ -17,7 +17,7 @@ func _physics_process(_delta):
 func spawn_mine():
 	var which_enemy = $"/root/Global".random_float_number(1, 10)
 	var loaded_enemy
-	if which_enemy <= 8:
+	if which_enemy <= 9.5:
 		loaded_enemy = basic_enemy.instance()
 	if !loaded_enemy:
 		loaded_enemy = fast_enemy.instance()

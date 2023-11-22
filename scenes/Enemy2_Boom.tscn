@@ -19,6 +19,7 @@ var target_position
 var rotating_speed = 0.05
 
 var this_enemy_on_screen = true
+var lightning_dealt = false
 var this_enemy_shot = false
 
 var move_up_complete = false # enemy will move up (relative to its spawn point) for 2 seconds before the path-finding/ player-hunting script begins
@@ -70,31 +71,33 @@ func _physics_process(delta):
 func _on_ExtinctionTimer_timeout():
 	if $\"/root/Global\".lightning_weapon_active and !this_enemy_on_screen:
 		return
-#	if lightning_strikes_against <= 1:
-#		return
-	$Anim_sparky.scale.x *= 3
-	$Anim_sparky.scale.y *= 3	
-	$explosion.visible = true
-#	$AnimatedSprite.visible = false
-	$explosion.play(\"explode\")
-	$Lightnings.visible = false
-	$Sprite.visible = false
-	$Sprite2.visible = false
-	# work out how far away exploding mine is from player
-	# and inflict damage if player within blast radius
-	if !this_enemy_shot:
-		var player_position = the_player.global_position
-		var mine_position = global_transform.origin
-		var distance_from_player = player_position.distance_to(mine_position)
-		if distance_from_player <= 175 and !$\"/root/Global\".lightning_weapon_active:
-			# _____________________^^^ this
-			# is the value for when the explosion affects the player
-			$\"/root/Global\".taking_damage = true
-	yield($explosion, \"animation_finished\")
-	# calc random value for damage based on proximity
-	if $\"/root/Global\".taking_damage and !this_enemy_shot:
-		$\"/root/Global\".player_damaged(3)
-	queue_free()
+	if $\"/root/Global\".lightning_weapon_active and !lightning_dealt:
+		lightning_dealt = true
+		lightning_death()
+	else:
+	#	$Anim_sparky.scale.x *= 3
+	#	$Anim_sparky.scale.y *= 3	
+		$explosion.visible = true
+	#	$AnimatedSprite.visible = false
+		$explosion.play(\"explode\")
+		$Lightnings.visible = false
+		$Sprite.visible = false
+		$Sprite2.visible = false
+		# work out how far away exploding mine is from player
+		# and inflict damage if player within blast radius
+		if !this_enemy_shot:
+			var player_position = the_player.global_position
+			var mine_position = global_transform.origin
+			var distance_from_player = player_position.distance_to(mine_position)
+			if distance_from_player <= 175 and !$\"/root/Global\".lightning_weapon_active:
+				# _____________________^^^ this
+				# is the value for when the explosion affects the player
+				$\"/root/Global\".taking_damage = true
+		yield($explosion, \"animation_finished\")
+		# calc random value for damage based on proximity
+		if $\"/root/Global\".taking_damage and !this_enemy_shot:
+			$\"/root/Global\".player_damaged(3)
+		queue_free()
 	
 
 func _on_NavTimer_timeout() -> void:
@@ -141,6 +144,13 @@ func _on_Area2D_area_entered(area):
 #	if area.name == \"Bullet\" and move_up_complete:
 #		this_enemy_shot = true
 #		_on_ExtinctionTimer_timeout()
+
+func lightning_death():
+	$LightningDeathTimer.wait_time = $\"/root/Global\".random_float_number(0.1, 1.4)
+	$LightningDeathTimer.start()
+
+func _on_LightningDeathTimer_timeout():
+	_on_ExtinctionTimer_timeout()
 "
 
 [sub_resource type="SpriteFrames" id=1]
@@ -334,7 +344,7 @@ modulate = Color( 0.776471, 0.952941, 0.0431373, 1 )
 scale = Vector2( 0.16, 0.16 )
 frames = SubResource( 18 )
 animation = "sparky"
-frame = 3
+frame = 1
 playing = true
 
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
@@ -346,6 +356,8 @@ scale = Vector2( 3.65, 3.7 )
 wait_time = 5.0
 one_shot = true
 
+[node name="LightningDeathTimer" type="Timer" parent="."]
+
 [connection signal="timeout" from="ExtinctionTimer" to="." method="_on_ExtinctionTimer_timeout"]
 [connection signal="timeout" from="NavTimer" to="." method="_on_NavTimer_timeout"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]
@@ -355,3 +367,4 @@ one_shot = true
 [connection signal="screen_entered" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_entered"]
 [connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
 [connection signal="timeout" from="StaggerTimer" to="." method="_on_StaggerTimer_timeout"]
+[connection signal="timeout" from="LightningDeathTimer" to="." method="_on_LightningDeathTimer_timeout"]

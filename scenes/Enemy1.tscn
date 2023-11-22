@@ -161,7 +161,6 @@ modulate = Color( 0.776471, 0.952941, 0.0431373, 1 )
 scale = Vector2( 0.16, 0.16 )
 frames = SubResource( 18 )
 animation = "sparky"
-frame = 3
 playing = true
 
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
@@ -177,6 +176,8 @@ __meta__ = {
 "_editor_description_": "Testing123"
 }
 
+[node name="LightningDeathTimer" type="Timer" parent="."]
+
 [connection signal="timeout" from="ExtinctionTimer" to="." method="_on_ExtinctionTimer_timeout"]
 [connection signal="timeout" from="NavTimer" to="." method="_on_NavTimer_timeout"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
@@ -185,3 +186,4 @@ __meta__ = {
 [connection signal="screen_entered" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_entered"]
 [connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
 [connection signal="area_entered" from="Area2D_ForTesla" to="." method="_on_Area2D_ForTesla_area_entered"]
+[connection signal="timeout" from="LightningDeathTimer" to="." method="_on_LightningDeathTimer_timeout"]
