@@ -26,7 +26,7 @@ var rotation_direction: int
 var acceleration = 30 #30
 var max_speed = 70
 var gravity = 0 #0 FOR FULL WEIGHTLESSNESS
-var rotation_speed = 4 #6
+var rotation_speed = 3 #6
 
 
 func _physics_process(delta):
@@ -35,7 +35,9 @@ func _physics_process(delta):
 		$"/root/Global".player_speed_boost = false
 		acceleration += 15
 		max_speed += 25
-		rotation_speed += 4
+		rotation_speed += 2
+		$BoostTimer.wait_time = 15
+		$BoostTimer.start()
 	
 	if $"/root/Global".enemy_surround:
 		surround_with_enemies()
@@ -234,3 +236,9 @@ func _on_TouchScreenControls_double_tap() -> void:
 func surround_with_enemies():
 	pass
 	# first, destroy all enemies currently in game (performance reasons)
+
+
+func _on_BoostTimer_timeout() -> void:
+	acceleration = 30
+	max_speed = 70
+	rotation_speed = 3

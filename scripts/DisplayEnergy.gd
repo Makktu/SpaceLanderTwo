@@ -25,6 +25,17 @@ func hide_shield():
 func shake_shield():
 	$AnimationPlayer.play("shake_shield")
 
+func show_speed_boost():
+	$SpeedBoost.visible = true
+	$SpeedBoost.play("boost")
+	$SpeedBoost/Particles2D.emitting = true
+	
+func hide_speed_boost():
+	$SpeedBoost.visible = false
+	$SpeedBoost.stop()
+	$SpeedBoost/Particles2D.emitting = false
+
+
 func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
 	if anim_name == "shake_shield" and shaken < 5:
 		shaken += 1

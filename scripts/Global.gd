@@ -41,7 +41,7 @@ var player_hits = 0
 # (not built yet)
 var enemy_surround = true
 var global_amount_to_be_spawned = 30
-var global_spawn_delay = 0.6
+var global_spawn_delay = 3
 var basic_enemy_speed = 250
 ###################################################################
 
@@ -116,6 +116,7 @@ func shield_used():
 func handle_pickups(item):
 	if item == 'speedup':
 		player_speed_boost = true
+		$DisplayEnergy.show_speed_boost()
 		# add animation for this pickup
 	
 	if item == 'lightning':

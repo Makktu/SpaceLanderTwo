@@ -227,6 +227,7 @@ position = Vector2( -1.33331, 0 )
 scale = Vector2( 0.6, 0.6 )
 frames = SubResource( 12 )
 animation = "recharge"
+frame = 3
 playing = true
 
 [node name="Light2D" type="Light2D" parent="."]
@@ -279,8 +280,11 @@ one_shot = true
 stream = ExtResource( 49 )
 pitch_scale = 1.2
 
+[node name="BoostTimer" type="Timer" parent="."]
+
 [connection signal="double_tap" from="Camera2D/TouchScreenControls" to="." method="_on_TouchScreenControls_double_tap"]
 [connection signal="timeout" from="Forcefield_Timer" to="." method="_on_Forcefield_Timer_timeout"]
 [connection signal="timeout" from="SpinOutTimer" to="." method="_on_SpinOutTimer_timeout"]
 [connection signal="timeout" from="CameraZoomBackTimer" to="." method="_on_CameraZoomBackTimer_timeout"]
 [connection signal="timeout" from="ShootingTimer" to="." method="_on_ShootingTimer_timeout"]
+[connection signal="timeout" from="BoostTimer" to="." method="_on_BoostTimer_timeout"]

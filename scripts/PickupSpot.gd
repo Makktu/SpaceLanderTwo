@@ -12,8 +12,8 @@ func _ready() -> void:
 func deploy_pickup():
 	if $"/root/Global".random_float_number(1,5) < 10:
 		speedup = true
-		$Speedup.visible = true
-		$Speedup.playing = true
+#		$Speedup.visible = true
+#		$Speedup.playing = true
 #		$Speedup.play("chevrons")
 	else:
 		if $"/root/Global".player_hits < 3:
@@ -57,12 +57,13 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 func _on_VisibilityNotifier2D_screen_entered() -> void:
 	$Particles2D.emitting = true
 	if speedup:
+		$Speedup.visible = true
 		$Speedup.playing = true
-
 
 func _on_VisibilityNotifier2D_screen_exited() -> void:
 	$Particles2D.emitting = false
 	$Speedup.playing = false
+	$Speedup.visible = true
 
 
 func _on_DelayTimer_timeout() -> void:
