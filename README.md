@@ -54,3 +54,8 @@ The spaghettification of the existing code means that, for example, reworking th
 
 SpaceLander2D is not dead. It's just going through some issues.
 
+##### 28 November 2023
+
+Been very busy with other things in life and coding, so this project has had to take a back seat. It IS still very much alive, though.
+
+Pickups for weapons and speed boosts have to be refined. Currently very scruffy. And how they impact on game flow has to be refined as well.
