@@ -12,10 +12,7 @@ func _ready() -> void:
 	$ShootingStarTimer.start()
 	$MeteorShowerTimer.start()
 	$BlinkingSatelliteTimer.start()
-	
 
-#func _physics_process(delta):
-#	$DecorAddOns.play()
 
 func _on_EndLevel_body_entered(body):
 	if body.name == "player":

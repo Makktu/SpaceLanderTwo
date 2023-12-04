@@ -20,14 +20,12 @@ func _physics_process(delta: float) -> void:
 	if collision_info:
 		velocity = velocity.bounce(collision_info.normal)
 		var collided_with = collision_info.collider.name.left(5)
+		var bulletImpact = bulletBurst.instance()
+		get_tree().get_root().get_node("World/Test_Line_Env1").add_child(bulletImpact)
+		bulletImpact.global_position.x = global_position.x
+		bulletImpact.global_position.y = global_position.y
 		if collided_with == "Enemy" or collided_with == "@Enem" or collided_with == "Bulle":
 			queue_free()
-		else:
-			var bulletImpact = bulletBurst.instance()
-			get_tree().get_root().get_node("World/Test_Line_Env1").add_child(bulletImpact)
-#				add_child(bulletImpact)
-			bulletImpact.global_position.x = global_position.x
-			bulletImpact.global_position.y = global_position.y
 
 
 func _on_VisibilityNotifier2D_screen_exited() -> void:

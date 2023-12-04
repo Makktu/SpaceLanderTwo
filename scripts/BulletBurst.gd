@@ -8,6 +8,4 @@ func _ready():
 
 
 func _on_LifetimeTimer_timeout() -> void:
-#	$CollisionSparkles.visible = false
-#	$CollisionSparkles.emitting = false
 	queue_free()
