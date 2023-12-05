@@ -631,6 +631,141 @@ scale = Vector2( 2, 2 )
 [node name="PickupSpot" parent="LightningWeaponSpawns" instance=ExtResource( 8 )]
 position = Vector2( -281, 2912 )
 
+[node name="PickupSpot3" parent="LightningWeaponSpawns" instance=ExtResource( 8 )]
+position = Vector2( 367, 2213 )
+
+[node name="PickupSpot6" parent="LightningWeaponSpawns" instance=ExtResource( 8 )]
+position = Vector2( 197, 3662 )
+
+[node name="PickupSpot20" parent="LightningWeaponSpawns" instance=ExtResource( 8 )]
+position = Vector2( 868, 3575 )
+
+[node name="PickupSpot21" parent="LightningWeaponSpawns" instance=ExtResource( 8 )]
+position = Vector2( 1153, 2991 )
+
+[node name="PickupSpot22" parent="LightningWeaponSpawns" instance=ExtResource( 8 )]
+position = Vector2( 2441, 3184 )
+
+[node name="PickupSpot23" parent="LightningWeaponSpawns" instance=ExtResource( 8 )]
+position = Vector2( 2386, 4315 )
+
+[node name="PickupSpot24" parent="LightningWeaponSpawns" instance=ExtResource( 8 )]
+position = Vector2( 1218, 4927 )
+
+[node name="PickupSpot25" parent="LightningWeaponSpawns" instance=ExtResource( 8 )]
+position = Vector2( 1517, 6242 )
+
+[node name="PickupSpot26" parent="LightningWeaponSpawns" instance=ExtResource( 8 )]
+position = Vector2( 2506, 6408 )
+
+[node name="PickupSpot27" parent="LightningWeaponSpawns" instance=ExtResource( 8 )]
+position = Vector2( 55, 6643 )
+
+[node name="PickupSpot28" parent="LightningWeaponSpawns" instance=ExtResource( 8 )]
+position = Vector2( 96, 4592 )
+
+[node name="PickupSpot29" parent="LightningWeaponSpawns" instance=ExtResource( 8 )]
+position = Vector2( -152, 3488 )
+
+[node name="PickupSpot30" parent="LightningWeaponSpawns" instance=ExtResource( 8 )]
+position = Vector2( -32, 8644 )
+
+[node name="PickupSpot31" parent="LightningWeaponSpawns" instance=ExtResource( 8 )]
+position = Vector2( 129, 8520 )
+
+[node name="PickupSpot32" parent="LightningWeaponSpawns" instance=ExtResource( 8 )]
+position = Vector2( 1026, 8699 )
+
+[node name="PickupSpot33" parent="LightningWeaponSpawns" instance=ExtResource( 8 )]
+position = Vector2( 1674, 9637 )
+
+[node name="PickupSpot34" parent="LightningWeaponSpawns" instance=ExtResource( 8 )]
+position = Vector2( 1085, 9807 )
+
+[node name="PickupSpot35" parent="LightningWeaponSpawns" instance=ExtResource( 8 )]
+position = Vector2( -313, 11573 )
+
+[node name="PickupSpot36" parent="LightningWeaponSpawns" instance=ExtResource( 8 )]
+position = Vector2( 818, 10483 )
+
+[node name="PickupSpot37" parent="LightningWeaponSpawns" instance=ExtResource( 8 )]
+position = Vector2( 1527, 11241 )
+
+[node name="PickupSpot38" parent="LightningWeaponSpawns" instance=ExtResource( 8 )]
+position = Vector2( 2539, 11213 )
+
+[node name="PickupSpot39" parent="LightningWeaponSpawns" instance=ExtResource( 8 )]
+position = Vector2( 3500, 10238 )
+
+[node name="PickupSpot40" parent="LightningWeaponSpawns" instance=ExtResource( 8 )]
+position = Vector2( 5915, 10049 )
+
+[node name="PickupSpot41" parent="LightningWeaponSpawns" instance=ExtResource( 8 )]
+position = Vector2( 4558, 9309 )
+
+[node name="PickupSpot42" parent="LightningWeaponSpawns" instance=ExtResource( 8 )]
+position = Vector2( 3749, 9291 )
+
+[node name="PickupSpot43" parent="LightningWeaponSpawns" instance=ExtResource( 8 )]
+position = Vector2( 1854, 8638 )
+
+[node name="PickupSpot44" parent="LightningWeaponSpawns" instance=ExtResource( 8 )]
+position = Vector2( 3620, 7902 )
+
+[node name="PickupSpot45" parent="LightningWeaponSpawns" instance=ExtResource( 8 )]
+position = Vector2( 3841, 6945 )
+
+[node name="PickupSpot46" parent="LightningWeaponSpawns" instance=ExtResource( 8 )]
+position = Vector2( 4646, 6182 )
+
+[node name="PickupSpot47" parent="LightningWeaponSpawns" instance=ExtResource( 8 )]
+position = Vector2( 4582, 3823 )
+
+[node name="PickupSpot48" parent="LightningWeaponSpawns" instance=ExtResource( 8 )]
+position = Vector2( 3943, 2393 )
+
+[node name="PickupSpot49" parent="LightningWeaponSpawns" instance=ExtResource( 8 )]
+position = Vector2( 5502, 2687 )
+
+[node name="PickupSpot50" parent="LightningWeaponSpawns" instance=ExtResource( 8 )]
+position = Vector2( 6633, 2512 )
+
+[node name="PickupSpot51" parent="LightningWeaponSpawns" instance=ExtResource( 8 )]
+position = Vector2( 7539, 2015 )
+
+[node name="PickupSpot52" parent="LightningWeaponSpawns" instance=ExtResource( 8 )]
+position = Vector2( 8712, 3215 )
+
+[node name="PickupSpot53" parent="LightningWeaponSpawns" instance=ExtResource( 8 )]
+position = Vector2( 9774, 1325 )
+
+[node name="PickupSpot54" parent="LightningWeaponSpawns" instance=ExtResource( 8 )]
+position = Vector2( 10110, 1527 )
+
+[node name="PickupSpot55" parent="LightningWeaponSpawns" instance=ExtResource( 8 )]
+position = Vector2( 9475, 2948 )
+
+[node name="PickupSpot56" parent="LightningWeaponSpawns" instance=ExtResource( 8 )]
+position = Vector2( 9811, 3509 )
+
+[node name="PickupSpot57" parent="LightningWeaponSpawns" instance=ExtResource( 8 )]
+position = Vector2( 10064, 4705 )
+
+[node name="PickupSpot58" parent="LightningWeaponSpawns" instance=ExtResource( 8 )]
+position = Vector2( 10193, 5252 )
+
+[node name="PickupSpot59" parent="LightningWeaponSpawns" instance=ExtResource( 8 )]
+position = Vector2( 8891, 7243 )
+
+[node name="PickupSpot60" parent="LightningWeaponSpawns" instance=ExtResource( 8 )]
+position = Vector2( 8325, 7340 )
+
+[node name="PickupSpot61" parent="LightningWeaponSpawns" instance=ExtResource( 8 )]
+position = Vector2( 10330, 7648 )
+
+[node name="PickupSpot62" parent="LightningWeaponSpawns" instance=ExtResource( 8 )]
+position = Vector2( 11011, 9419 )
+
 [node name="PickupSpot2" parent="LightningWeaponSpawns" instance=ExtResource( 8 )]
 position = Vector2( 907, 4183 )
 
@@ -650,7 +785,16 @@ position = Vector2( 3721, 3336 )
 position = Vector2( 2853, 2396 )
 
 [node name="PickupSpot5" parent="LightningWeaponSpawns" instance=ExtResource( 8 )]
-position = Vector2( 1464, 6216 )
+position = Vector2( 1715, 6428 )
+
+[node name="PickupSpot63" parent="LightningWeaponSpawns" instance=ExtResource( 8 )]
+position = Vector2( 1223, 4685 )
+
+[node name="PickupSpot64" parent="LightningWeaponSpawns" instance=ExtResource( 8 )]
+position = Vector2( 2502, 6199 )
+
+[node name="PickupSpot65" parent="LightningWeaponSpawns" instance=ExtResource( 8 )]
+position = Vector2( 1575, 6780 )
 
 [node name="PickupSpot7" parent="LightningWeaponSpawns" instance=ExtResource( 8 )]
 position = Vector2( 2747, 6993 )

@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
 var navagent : NavigationAgent2D
-var speed = 250
+var speed = 150
 var target_position
 
 var this_enemy_on_screen = true

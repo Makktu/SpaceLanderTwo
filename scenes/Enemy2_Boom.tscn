@@ -273,7 +273,6 @@ script = ExtResource( 3 )
 self_modulate = Color( 0.172549, 0.937255, 0.0627451, 1 )
 frames = SubResource( 1 )
 animation = "star_enemy"
-frame = 1
 playing = true
 
 [node name="AnimatedSprite2" type="AnimatedSprite" parent="Lightnings"]
@@ -281,6 +280,7 @@ self_modulate = Color( 0.172549, 0.937255, 0.0627451, 1 )
 rotation = 0.806299
 frames = SubResource( 1 )
 animation = "star_enemy"
+frame = 1
 playing = true
 
 [node name="AnimatedSprite3" type="AnimatedSprite" parent="Lightnings"]
@@ -288,6 +288,7 @@ self_modulate = Color( 0.172549, 0.937255, 0.0627451, 1 )
 rotation = 1.62762
 frames = SubResource( 1 )
 animation = "star_enemy"
+frame = 1
 playing = true
 
 [node name="AnimatedSprite4" type="AnimatedSprite" parent="Lightnings"]
@@ -295,7 +296,6 @@ self_modulate = Color( 0.172549, 0.937255, 0.0627451, 1 )
 rotation = 2.39837
 frames = SubResource( 1 )
 animation = "star_enemy"
-frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -344,6 +344,7 @@ modulate = Color( 0.776471, 0.952941, 0.0431373, 1 )
 scale = Vector2( 0.16, 0.16 )
 frames = SubResource( 18 )
 animation = "sparky"
+frame = 3
 playing = true
 
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]

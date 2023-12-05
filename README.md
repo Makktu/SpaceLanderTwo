@@ -59,3 +59,14 @@ SpaceLander2D is not dead. It's just going through some issues.
 Been very busy with other things in life and coding, so this project has had to take a back seat. It IS still very much alive, though.
 
 Pickups for weapons and speed boosts have to be refined. Currently very scruffy. And how they impact on game flow has to be refined as well.
+
+
+##### 5 December 2023
+
+The last days of SpaceLander2 – only in the sense that I am completing it by the close of business on 15-12-23 (9 days hence). Whatever state it is in then, is the state it is released in. If it is in too poor a state to be released, the project is cancelled.
+
+This week and next I am visiting all the elements of the game that need serious work, such as pickups, enemy behaviours and deadliness to the player (and vice versa), the general gameflow (what has to happen when and where, and what completion looks like) and other things of that nature.
+
+Yesterday I (re)added an enemy, the Sentinel, and created a decent first draft of its movement logic. It currently passes through the scenery at times – a bug that might be left as a feature. I will see how it feels in playtests as the next week goes on.
+
+Today I refined the pickup logic and display, and doubled the amount of pickups in the world. The player should never be so far from a pickup (spatially or temporally) that all is lost. This still needs much refinement.

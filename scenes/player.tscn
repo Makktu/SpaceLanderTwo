@@ -227,7 +227,6 @@ position = Vector2( -1.33331, 0 )
 scale = Vector2( 0.6, 0.6 )
 frames = SubResource( 12 )
 animation = "recharge"
-frame = 2
 playing = true
 
 [node name="Light2D" type="Light2D" parent="."]

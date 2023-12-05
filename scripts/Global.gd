@@ -41,7 +41,7 @@ var player_hits = 0
 # (not built yet)
 var enemy_surround = true
 var global_amount_to_be_spawned = 30
-var global_spawn_delay = 3
+var global_spawn_delay = 8
 var basic_enemy_speed = 250
 ###################################################################
 
@@ -170,3 +170,6 @@ func _on_ResetTimer_timeout():
 	global_amount_to_be_spawned = 10
 	global_spawn_delay = 10
 	basic_enemy_speed = 150
+	
+func booster_display_timeout(boost_time):
+	$DisplayEnergy.speed_boost_timeout(boost_time)

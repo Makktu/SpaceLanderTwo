@@ -25,9 +25,9 @@ func _physics_process(delta: float) -> void:
 		$StruckByLightningTimer.start()
 	else:
 		if !sentinel_moving_x and !sentinel_moving_y:
-			rotation += 0.003
+			rotation += 0.0015
 		if rotate_a_bit:
-			rotation += 0.03
+			rotation += 0.01
 		if sentinel_moving_x:
 			position.x += direction_of_travel_x
 		if sentinel_moving_y:

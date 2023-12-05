@@ -8,6 +8,8 @@ func _ready() -> void:
 
 func show_lightning():
 	$Lightning.visible = true
+	$Lightning.scale.x = 0.02
+	$Lightning.scale.y = 0.02
 	$Lightning/Particles2D.emitting = true
 	
 func hide_lightning():
@@ -42,3 +44,12 @@ func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
 		shake_shield()
 	else:
 		shaken = 0
+		
+		
+func speed_boost_timeout(boost_time):
+	$SpeedBoost/DisplayTimeoutTimer.wait_time = boost_time
+	$SpeedBoost/DisplayTimeoutTimer.start()
+
+
+func _on_DisplayTimeoutTimer_timeout():
+	hide_speed_boost()

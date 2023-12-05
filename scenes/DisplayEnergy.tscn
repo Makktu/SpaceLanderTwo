@@ -175,7 +175,6 @@ position = Vector2( 411, 30 )
 scale = Vector2( 0.55, 0.7 )
 frames = SubResource( 7 )
 animation = "boost"
-frame = 1
 speed_scale = 0.3
 playing = true
 
@@ -184,6 +183,9 @@ emitting = false
 amount = 64
 process_material = SubResource( 1 )
 
+[node name="DisplayTimeoutTimer" type="Timer" parent="SpeedBoost"]
+one_shot = true
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 2 )
 anims/low_shield = SubResource( 4 )
@@ -191,4 +193,5 @@ anims/new_lightning = SubResource( 6 )
 anims/picked_up_new = SubResource( 5 )
 anims/shake_shield = SubResource( 3 )
 
+[connection signal="timeout" from="SpeedBoost/DisplayTimeoutTimer" to="." method="_on_DisplayTimeoutTimer_timeout"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

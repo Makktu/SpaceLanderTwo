@@ -10,11 +10,9 @@ func _ready() -> void:
 	
 	
 func deploy_pickup():
-	if $"/root/Global".random_float_number(1,5) < 10:
+	var pickup_chance = $"/root/Global".random_float_number(1, 50)
+	if pickup_chance < 20:
 		speedup = true
-#		$Speedup.visible = true
-#		$Speedup.playing = true
-#		$Speedup.play("chevrons")
 	else:
 		if $"/root/Global".player_hits < 3:
 			shield_chance = 50
@@ -22,6 +20,9 @@ func deploy_pickup():
 			shield_on = true
 		else:
 			lightning_on = true
+		
+		if shield_chance != 10:
+			shield_chance = 10
 						
 		if shield_on:
 			$Shield.visible = true
@@ -32,7 +33,7 @@ func deploy_pickup():
 	
 func _on_PickupSpot_body_entered(body):
 	if body.name == 'player' and visible:
-		var spawn_time_now = $"/root/Global".random_float_number(100, 400)
+		var spawn_time_now = $"/root/Global".random_float_number(5, 10)
 		$SpawnTimer.wait_time = spawn_time_now
 		$SpawnTimer.start()
 		$AnimationPlayer.play("fade")
@@ -45,8 +46,6 @@ func _on_PickupSpot_body_entered(body):
 
 
 func _on_SpawnTimer_timeout():
-	# restore pickup
-#	$AnimationPlayer.play_backwards("fade")
 	deploy_pickup()
 
 
