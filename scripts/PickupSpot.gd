@@ -10,7 +10,12 @@ func _ready() -> void:
 	
 	
 func deploy_pickup():
+	speedup = false
+	shield_on = false
+	lightning_on = false
+	
 	var pickup_chance = $"/root/Global".random_float_number(1, 50)
+	
 	if pickup_chance < 20:
 		speedup = true
 	else:
@@ -24,10 +29,12 @@ func deploy_pickup():
 		if shield_chance != 10:
 			shield_chance = 10
 						
-		if shield_on:
-			$Shield.visible = true
-		else:
-			$Sprite.visible = true		
+	if shield_on:
+		$Shield.visible = true
+	elif lightning_on:
+		$Sprite.visible = true
+	else:
+		$Speedup.visible = true		
 	
 		
 	
@@ -46,11 +53,15 @@ func _on_PickupSpot_body_entered(body):
 
 
 func _on_SpawnTimer_timeout():
+	visible = true
 	deploy_pickup()
 
 
 func _on_AnimationPlayer_animation_finished(anim_name):
-	visible = !visible
+	visible = false
+	$Sprite.visible = false
+	$Shield.visible = false
+	$Speedup.visible = false
 
 
 func _on_VisibilityNotifier2D_screen_entered() -> void:

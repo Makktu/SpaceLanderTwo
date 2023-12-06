@@ -11,7 +11,7 @@ pause_mode = 1
 script = ExtResource( 4 )
 
 [node name="player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 562, 8445 )
+position = Vector2( 11475, 11613 )
 z_index = 10
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]

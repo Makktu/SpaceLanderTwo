@@ -97,10 +97,10 @@ func _on_ExtinctionTimer_timeout():
 	# calc random value for damage based on proximity
 	if $\"/root/Global\".taking_damage:
 		if distance_from_player > 99 and distance_from_player <= 175:
-			the_player.shields -= RandomNumberGenerator.new().randf_range(40000, 50000)
+			$\"/root/Global\".player_damaged(5)
 		else:
 			if distance_from_player <= 100:
-				the_player.shields -= RandomNumberGenerator.new().randf_range(80000, 120000)
+				$\"/root/Global\".player_damaged(9)
 
 	queue_free()
 	
@@ -288,7 +288,6 @@ script = ExtResource( 3 )
 self_modulate = Color( 0.172549, 0.937255, 0.0627451, 1 )
 frames = SubResource( 1 )
 animation = "star_enemy"
-frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LightningController/Lightning1"]
@@ -302,6 +301,7 @@ self_modulate = Color( 0.172549, 0.937255, 0.0627451, 1 )
 rotation = 0.806299
 frames = SubResource( 1 )
 animation = "star_enemy"
+frame = 1
 playing = true
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="LightningController/Lightning2"]
@@ -316,6 +316,7 @@ self_modulate = Color( 0.172549, 0.937255, 0.0627451, 1 )
 rotation = 1.62762
 frames = SubResource( 1 )
 animation = "star_enemy"
+frame = 1
 playing = true
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="LightningController/Lightning3"]
@@ -330,7 +331,6 @@ self_modulate = Color( 0.172549, 0.937255, 0.0627451, 1 )
 rotation = 2.39837
 frames = SubResource( 1 )
 animation = "star_enemy"
-frame = 1
 playing = true
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="LightningController/Lightning4"]
@@ -384,6 +384,7 @@ modulate = Color( 0.776471, 0.952941, 0.0431373, 1 )
 scale = Vector2( 0.16, 0.16 )
 frames = SubResource( 18 )
 animation = "sparky"
+frame = 3
 playing = true
 
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
