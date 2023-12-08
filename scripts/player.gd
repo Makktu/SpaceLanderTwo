@@ -2,12 +2,15 @@ extends KinematicBody2D
 
 onready var Swipe = $Camera2D/TouchScreenControls
 
+onready var player_acceleration = 40 #30
+onready var player_max_speed = 55
+onready var player_gravity = 0 #0 FOR FULL WEIGHTLESSNESS
+onready var player_rotation_speed = 3 #6
+
 const bullet = preload("res://scenes/Bullet.tscn")
 
 var spin_out = false
-
 var player_is_shooting = false
-
 var swipe_up = false
 var swipe_down = false
 var swipe_left = false
@@ -23,10 +26,17 @@ var rotation_direction: int
 
 # PLAYER CONTROLLER VARIABLES
 # PREVIOUS TEST VALUES COMMENTED TO SIDE
-var acceleration = 15 #30
-var max_speed = 50
-var gravity = 0 #0 FOR FULL WEIGHTLESSNESS
-var rotation_speed = 2.5 #6
+var acceleration
+var max_speed
+var gravity
+var rotation_speed
+
+
+func _ready():
+	acceleration = player_acceleration
+	max_speed = player_max_speed
+	gravity = player_gravity
+	rotation_speed = player_rotation_speed
 
 
 func _physics_process(delta):
@@ -243,6 +253,6 @@ func surround_with_enemies():
 
 
 func _on_BoostTimer_timeout() -> void:
-	acceleration = 30
-	max_speed = 70
-	rotation_speed = 3
+	acceleration = player_acceleration
+	max_speed = player_max_speed
+	rotation_speed = player_rotation_speed

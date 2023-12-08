@@ -1,49 +1,35 @@
 extends Node2D
 
-onready var player_energy = 1000000
-
-
 var music_on = false
-
 var sound_effects_on = false
-
 var game_over = false
-
 var taking_damage = false
 var can_damage_player = true
 var debug_enemies_on = true
 var debug_damage_on = true
 var debug_framerate_on = false
-
 var energy_pickup = false
-
 var camera_is_zooming = false
 var camera_zoom_direction = "out"
 var camera_zoom_target = 1
-
 var lightning_weapon_equipped = true
 var lightning_weapon_active = false
-
 var player_shields_on = true
 var player_speed_boost = false
-
 var first_shield_collected = false
 var first_lightning_collected = false
-
 var tentacle_struck = false
 var beam_struck = false
-
 var game_level = 0
-
 var player_hits = 0
 
-# variable controlling when the player will be encircled by enemies
-# (not built yet)
 var enemy_surround = true
 var global_amount_to_be_spawned = 30
-var global_spawn_delay = 8
-var basic_enemy_speed = 250
+var global_spawn_delay = 5
+var basic_enemy_speed = 100
 ###################################################################
+
+
 
 
 
@@ -62,6 +48,7 @@ func pause_or_game_over(state):
 	if state == "game_over":
 		if !debug_damage_on:
 			return
+		taking_damage = false
 		game_over = true
 		game_on(false)
 		$GameOverLayer.visible = true
@@ -160,10 +147,6 @@ func game_on(state):
 		$DisplayEnergy.hide_lightning()
 		$DisplayEnergy.hide_shield()
 		
-		
-func reset_global_values():
-#	$ResetTimer.start()
-	pass
 
 
 func _on_ResetTimer_timeout():

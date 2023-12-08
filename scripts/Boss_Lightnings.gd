@@ -68,7 +68,6 @@ func _on_Lightning1_body_entered(body):
 	if body.name == 'player' and tentacles_can_damage_player:
 		print("spoke1 strike!")
 		if !$"/root/Global".tentacle_struck:
-			$"/root/Global".player_energy -= 50000
 			$"/root/Global".tentacle_struck = true
 
 
@@ -76,7 +75,6 @@ func _on_Lightning2_body_entered(body):
 	if body.name == 'player' and tentacles_can_damage_player:
 		print("spoke2 strike!")
 		if !$"/root/Global".tentacle_struck:
-			$"/root/Global".player_energy -= 50000
 			$"/root/Global".tentacle_struck = true
 
 
@@ -84,7 +82,6 @@ func _on_Lightning3_body_entered(body):
 	if body.name == 'player' and tentacles_can_damage_player:
 		print("spoke3 strike!")
 		if !$"/root/Global".tentacle_struck:
-			$"/root/Global".player_energy -= 50000
 			$"/root/Global".tentacle_struck = true
 			
 
@@ -93,5 +90,4 @@ func _on_Lightning4_body_entered(body):
 	if body.name == 'player' and tentacles_can_damage_player:
 		print("spoke4 strike!")
 		if !$"/root/Global".tentacle_struck:
-			$"/root/Global".player_energy -= 50000
 			$"/root/Global".tentacle_struck = true

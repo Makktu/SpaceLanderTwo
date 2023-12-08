@@ -5,6 +5,7 @@ var lightning_on = false
 var speedup = false
 var shield_chance = 10
 
+
 func _ready() -> void:
 	deploy_pickup()
 	
@@ -19,7 +20,7 @@ func deploy_pickup():
 	if pickup_chance < 20:
 		speedup = true
 	else:
-		if $"/root/Global".player_hits < 3:
+		if $"/root/Global".player_hits >= 8:
 			shield_chance = 50
 		if $"/root/Global".random_float_number(1,100) < shield_chance:
 			shield_on = true
@@ -33,8 +34,10 @@ func deploy_pickup():
 		$Shield.visible = true
 	elif lightning_on:
 		$Sprite.visible = true
+	elif speedup:
+		$Speedup.visible = true
 	else:
-		$Speedup.visible = true		
+		print("MAJOR BUG HERE")		
 	
 		
 	

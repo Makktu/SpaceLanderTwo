@@ -722,6 +722,21 @@ position = Vector2( 4646, 6182 )
 [node name="PickupSpot47" parent="LightningWeaponSpawns" instance=ExtResource( 8 )]
 position = Vector2( 4582, 3823 )
 
+[node name="PickupSpot66" parent="LightningWeaponSpawns" instance=ExtResource( 8 )]
+position = Vector2( 5272, 4453 )
+
+[node name="PickupSpot67" parent="LightningWeaponSpawns" instance=ExtResource( 8 )]
+position = Vector2( 6258, 4652 )
+
+[node name="PickupSpot68" parent="LightningWeaponSpawns" instance=ExtResource( 8 )]
+position = Vector2( 6258, 2781 )
+
+[node name="PickupSpot69" parent="LightningWeaponSpawns" instance=ExtResource( 8 )]
+position = Vector2( 7522, 4800 )
+
+[node name="PickupSpot70" parent="LightningWeaponSpawns" instance=ExtResource( 8 )]
+position = Vector2( 8735, 5078 )
+
 [node name="PickupSpot48" parent="LightningWeaponSpawns" instance=ExtResource( 8 )]
 position = Vector2( 3943, 2393 )
 
@@ -777,7 +792,7 @@ position = Vector2( 897, 2703 )
 position = Vector2( 2358, 2980 )
 
 [node name="PickupSpot18" parent="LightningWeaponSpawns" instance=ExtResource( 8 )]
-position = Vector2( 2260, 3490 )
+position = Vector2( 4228, 4925 )
 
 [node name="PickupSpot19" parent="LightningWeaponSpawns" instance=ExtResource( 8 )]
 position = Vector2( 3721, 3336 )

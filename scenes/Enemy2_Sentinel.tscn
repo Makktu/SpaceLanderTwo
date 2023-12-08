@@ -67,6 +67,10 @@ one_shot = true
 [node name="BulletCollisionShape2D" type="CollisionShape2D" parent="BulletsDetector"]
 shape = SubResource( 3 )
 
+[node name="SpeedupTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
 [connection signal="timeout" from="WaitTimer" to="." method="_on_WaitTimer_timeout"]
 [connection signal="screen_entered" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_entered"]
 [connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
@@ -74,3 +78,4 @@ shape = SubResource( 3 )
 [connection signal="timeout" from="StruckByLightningTimer" to="." method="_on_StruckByLightningTimer_timeout"]
 [connection signal="timeout" from="RotationTimer" to="." method="_on_RotationTimer_timeout"]
 [connection signal="area_entered" from="BulletsDetector" to="." method="_on_BulletsDetector_area_entered"]
+[connection signal="timeout" from="SpeedupTimer" to="." method="_on_SpeedupTimer_timeout"]

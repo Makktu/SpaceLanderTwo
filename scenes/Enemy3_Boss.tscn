@@ -393,7 +393,8 @@ position = Vector2( 1.5, 1 )
 scale = Vector2( 3.65, 3.7 )
 
 [node name="StaggerTimer" type="Timer" parent="."]
-wait_time = 10.0
+wait_time = 15.0
+one_shot = true
 
 [connection signal="body_entered" from="LightningController/Lightning1" to="LightningController" method="_on_Lightning1_body_entered"]
 [connection signal="body_entered" from="LightningController/Lightning2" to="LightningController" method="_on_Lightning2_body_entered"]

@@ -6,6 +6,7 @@ var sentinel_moving_x = false
 var sentinel_moving_y = false
 var just_had_a_stop = false
 var rotate_a_bit = false
+var speed_up_a_bit = false
 var stopped_by_lightning = false
 var stopped_by_lightning_time = 20
 var stopped_by_bullets_time = 10
@@ -32,6 +33,11 @@ func _physics_process(delta: float) -> void:
 			position.x += direction_of_travel_x
 		if sentinel_moving_y:
 			position.y += direction_of_travel_y
+		if speed_up_a_bit:
+			if sentinel_moving_x:
+				position.x += direction_of_travel_x / 2.5
+			if sentinel_moving_y:
+				position.y += direction_of_travel_y / 2.5
 		if sentinel_moving_x or sentinel_moving_y:
 			if not just_had_a_stop:
 				on_patrol()
@@ -55,7 +61,6 @@ func on_patrol():
 		else:
 			direction_of_travel_y = -direction_of_travel_y
 	if factor_one > 8 and factor_one < 12 and !rotate_a_bit:
-		print("factor_one: rotation")
 		rotate_a_bit = true
 		$RotationTimer.start()
 		
@@ -71,13 +76,17 @@ func _on_WaitTimer_timeout() -> void:
 	just_had_a_stop = true
 	$HadStopTimer.wait_time = $"/root/Global".random_float_number(10, 30)
 	$HadStopTimer.start()
+	if $"/root/Global".random_float_number(1,10) < 11 and !speed_up_a_bit:
+		speed_up_a_bit = true
+		direction_of_travel_x += direction_of_travel_x * 3
+		direction_of_travel_y += direction_of_travel_y * 3
+		$SpeedupTimer.start()
 	on_patrol()
 
 
 func _on_Enemy2_Sentinel_body_entered(body: Node) -> void:
 	if body.name == 'player':
 		$"/root/Global".taking_damage = true
-		print('crashed into Sentinel')
 	else:
 		direction_of_travel_x = -direction_of_travel_x
 		direction_of_travel_y = -direction_of_travel_y
@@ -114,6 +123,7 @@ func _on_RotationTimer_timeout() -> void:
 	rotate_a_bit = false
 
 
+
 func _on_Enemy2_Sentinel_area_entered(area):
 	if area.name == "BulletArea":
 		print('HITTTT')
@@ -140,3 +150,7 @@ func _on_BulletsDetector_area_entered(area):
 			$Anim_sparky.visible = true
 			$Anim_sparky.playing = true
 			$StruckByLightningTimer.start()
+
+
+func _on_SpeedupTimer_timeout():
+	speed_up_a_bit = false
