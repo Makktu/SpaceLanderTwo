@@ -1,6 +1,6 @@
 extends Node2D
 
-var music_on = false
+var music_on = true
 var sound_effects_on = false
 var game_over = false
 var taking_damage = false

@@ -6,9 +6,9 @@ var framerate_on = true
 
 var current_energy = 0
 
-func _ready():
-	if !$"/root/Global".music_on:
-		$MusicToggle.text = "music_OFF"
+#func _ready():
+#	if !$"/root/Global".music_on:
+#		$MusicToggle.text = "music_OFF"
 		
 		
 func _on_PauseButton_pressed():
