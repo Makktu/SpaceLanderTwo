@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/neptune_b.mp3-3b942994713859874d534283a5ea13de.mp3str"
+
+[deps]
+
+source_file="res://assets/music/neptune_b.mp3"
+dest_files=[ "res://.import/neptune_b.mp3-3b942994713859874d534283a5ea13de.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

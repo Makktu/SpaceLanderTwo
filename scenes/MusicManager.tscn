@@ -1,9 +1,13 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://assets/music/new_music1.ogg" type="AudioStream" id=1]
 [ext_resource path="res://scripts/MusicManager.gd" type="Script" id=2]
 [ext_resource path="res://assets/music/new_music2.ogg" type="AudioStream" id=3]
 [ext_resource path="res://assets/music/theme_a1.mp3" type="AudioStream" id=4]
+[ext_resource path="res://assets/music/neptune_b.mp3" type="AudioStream" id=5]
+[ext_resource path="res://assets/music/demo02.ogg" type="AudioStream" id=6]
+[ext_resource path="res://assets/music/demo01.mp3" type="AudioStream" id=7]
+[ext_resource path="res://assets/music/signal_noise.mp3" type="AudioStream" id=8]
 
 [node name="MusicManager" type="Node2D"]
 script = ExtResource( 2 )
@@ -17,6 +21,22 @@ stream = ExtResource( 3 )
 [node name="Track3" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
 
+[node name="Track4" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+
+[node name="Track5" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+
+[node name="Track6" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+
+[node name="Track7" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+
 [connection signal="finished" from="Track1" to="." method="_on_Track1_finished"]
 [connection signal="finished" from="Track2" to="." method="_on_Track2_finished"]
 [connection signal="finished" from="Track3" to="." method="_on_Track3_finished"]
+[connection signal="finished" from="Track4" to="." method="_on_Track4_finished"]
+[connection signal="finished" from="Track5" to="." method="_on_Track5_finished"]
+[connection signal="finished" from="Track6" to="." method="_on_Track6_finished"]
+[connection signal="finished" from="Track7" to="." method="_on_Track7_finished"]

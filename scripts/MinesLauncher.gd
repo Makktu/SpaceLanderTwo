@@ -9,8 +9,15 @@ var already_triggered = false
 var amount_spawned = 0
 var amount_to_be_spawned
 var spawn_wait_time
+var lightning_stopped_us = false
 
 func _physics_process(_delta):
+	if $"/root/Global".lightning_weapon_active and already_triggered:
+		$AnimatedSprite.stop()
+		$AnimatedSprite.visible = false
+		$DormancyTimer.wait_time = 15
+		lightning_stopped_us = true
+		$DormancyTimer.start()
 	if $SpawnTimer.time_left > 0:
 		$AnimatedSprite.scale.y += 0.00025
 
@@ -39,6 +46,8 @@ func _on_Area2D_body_entered(body):
 
 
 func _on_SpawnTimer_timeout():
+	if lightning_stopped_us:
+		return
 	amount_spawned += 1
 	if amount_spawned < amount_to_be_spawned:
 		spawn_mine()
@@ -47,13 +56,20 @@ func _on_SpawnTimer_timeout():
 	else:
 		$AnimatedSprite.stop()
 		$AnimatedSprite.visible = false
+		$DormancyTimer.wait_time = 30
 		$DormancyTimer.start()
 
 
 func _on_DormancyTimer_timeout():
 	# resets the spawner so it will trigger again if the player passes by
-	already_triggered = false
-	amount_spawned = 0
-	amount_to_be_spawned += 2
-	if amount_to_be_spawned > 20:
-		amount_to_be_spawned = 20
+	if lightning_stopped_us:
+		lightning_stopped_us = false
+		$AnimatedSprite.visible = true
+		$AnimatedSprite.play("launching_sparky")
+		$SpawnTimer.start()
+	else:
+		already_triggered = false
+		amount_spawned = 0
+		amount_to_be_spawned += 2
+		if amount_to_be_spawned > 30:
+			amount_to_be_spawned = 30
