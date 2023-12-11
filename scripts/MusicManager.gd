@@ -10,10 +10,31 @@ func _ready():
 		start_music()
 		
 func start_music():
+	var starting_track = 3
+	starting_track = round($"/root/Global".random_float_number(0,8))
+	if starting_track == 8:
+		starting_track = 7
+	if starting_track == 0:
+		starting_track = 1
+
 	if $"/root/Global".music_on:
-		# Track 3 is the starting track
-		$Track3.play()
-		
+		if starting_track == 1:
+			$Track1.play()
+		elif starting_track == 2:
+			$Track2.play()
+		elif starting_track == 3:
+			$Track3.play()
+		elif starting_track == 4:
+			$Track4.play()
+		elif starting_track == 5:
+			$Track5.play()
+		elif starting_track == 6:
+			$Track6.play()
+		elif starting_track == 7:
+			$Track7.play()
+		else:
+			$Track3.play()
+
 func stop_music():
 	$Track1.stop()
 	$Track2.stop()

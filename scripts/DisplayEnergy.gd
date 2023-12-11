@@ -8,8 +8,7 @@ func _ready() -> void:
 
 func show_lightning():
 	$Lightning.visible = true
-	$Lightning.scale.x = 0.02
-	$Lightning.scale.y = 0.02
+	$AnimationPlayer.play("new_lightning")		
 	$Lightning/Particles2D.emitting = true
 	
 func hide_lightning():
@@ -42,8 +41,11 @@ func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
 	if anim_name == "shake_shield" and shaken < 5:
 		shaken += 1
 		shake_shield()
-	else:
-		shaken = 0
+		
+	if anim_name == "picked_up_new":
+		$Lightning.scale.x = 0.02
+		$Lightning.scale.y = 0.02
+		
 		
 		
 func speed_boost_timeout(boost_time):

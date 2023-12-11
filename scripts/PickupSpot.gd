@@ -29,7 +29,10 @@ func deploy_pickup():
 		
 		if shield_chance != 10:
 			shield_chance = 10
-						
+	
+	show_pickup()
+	
+func show_pickup():
 	if shield_on:
 		$Shield.visible = true
 	elif lightning_on:
@@ -38,7 +41,6 @@ func deploy_pickup():
 		$Speedup.visible = true
 	else:
 		print("MAJOR BUG HERE")		
-	
 		
 	
 func _on_PickupSpot_body_entered(body):
@@ -49,8 +51,12 @@ func _on_PickupSpot_body_entered(body):
 		$AnimationPlayer.play("fade")
 		if shield_on:
 			$"/root/Global".handle_pickups('shield')
-		if lightning_on:
+			return
+		if lightning_on and $"/root/Global".lightning_weapon_equipped:
+			return
+		elif lightning_on:
 			$"/root/Global".handle_pickups('lightning')
+			return
 		if speedup:
 			$"/root/Global".handle_pickups("speedup")
 
@@ -61,6 +67,9 @@ func _on_SpawnTimer_timeout():
 
 
 func _on_AnimationPlayer_animation_finished(anim_name):
+	lightning_on = false
+	speedup = false
+	shield_on = false
 	visible = false
 	$Sprite.visible = false
 	$Shield.visible = false

@@ -15,7 +15,7 @@ func _physics_process(_delta):
 	if $"/root/Global".lightning_weapon_active and already_triggered:
 		$AnimatedSprite.stop()
 		$AnimatedSprite.visible = false
-		$DormancyTimer.wait_time = 15
+		$DormancyTimer.wait_time = 5
 		lightning_stopped_us = true
 		$DormancyTimer.start()
 	if $SpawnTimer.time_left > 0:
@@ -33,9 +33,9 @@ func spawn_mine():
 	
 
 func _on_Area2D_body_entered(body):
-	if !$"/root/Global".debug_enemies_on:
-		return
 	if body.name == 'player' and !already_triggered:
+		if !$"/root/Global".debug_enemies_on:
+			return
 		already_triggered = true
 		amount_to_be_spawned = $"/root/Global".global_amount_to_be_spawned
 		spawn_wait_time = $"/root/Global".global_spawn_delay
@@ -71,5 +71,5 @@ func _on_DormancyTimer_timeout():
 		already_triggered = false
 		amount_spawned = 0
 		amount_to_be_spawned += 2
-		if amount_to_be_spawned > 30:
-			amount_to_be_spawned = 30
+		if amount_to_be_spawned > 50:
+			amount_to_be_spawned = 50

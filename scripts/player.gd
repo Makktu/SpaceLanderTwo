@@ -53,9 +53,6 @@ func _physics_process(delta):
 		$BoostTimer.start()
 		$"/root/Global".booster_display_timeout(boost_time)
 	
-	if $"/root/Global".enemy_surround:
-		surround_with_enemies()
-	
 	# BOSS TENTACLE STRIKE LOGIC
 	if $"/root/Global".tentacle_struck:
 		if $AnimatedSprite.visible:
@@ -246,10 +243,6 @@ func _on_ShootingTimer_timeout() -> void:
 
 func _on_TouchScreenControls_double_tap() -> void:
 	shoot_bullets()
-	
-func surround_with_enemies():
-	pass
-	# first, destroy all enemies currently in game (performance reasons)
 
 
 func _on_BoostTimer_timeout() -> void:

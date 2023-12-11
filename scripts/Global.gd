@@ -23,7 +23,6 @@ var beam_struck = false
 var game_level = 0
 var player_hits = 0
 
-var enemy_surround = true
 var global_amount_to_be_spawned = 30
 var global_spawn_delay = 5
 var basic_enemy_speed = 100
@@ -108,12 +107,9 @@ func handle_pickups(item):
 	
 	if item == 'lightning':
 		if lightning_weapon_equipped:
-			# take no action if lightning already picked up
-			# (doesn't stack)
 			return
 		else:
 			$DisplayEnergy.show_lightning()
-			$DisplayEnergy/AnimationPlayer.play("new_lightning")	
 			lightning_weapon_equipped = true		
 	if item == 'shield':
 		if !player_shields_on:
