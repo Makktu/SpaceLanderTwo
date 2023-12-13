@@ -62,7 +62,7 @@ func _on_ExtinctionTimer_timeout():
 		# calc random value for damage based on proximity
 		
 		if $"/root/Global".taking_damage:
-			$"/root/Global".player_damaged(2)
+			$"/root/Global".player_damaged(1)
 						
 		queue_free()
 	

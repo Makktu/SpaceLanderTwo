@@ -4,6 +4,7 @@ var shield_on = false
 var lightning_on = false
 var speedup = false
 var shield_chance = 10
+var keep_running = false
 
 
 func _ready() -> void:
@@ -11,10 +12,16 @@ func _ready() -> void:
 	
 	
 func deploy_pickup():
+	if !keep_running:
+		return
+	$Shield.visible = false
+	$Sprite.visible = false
+	$Speedup.visible = false
 	if $"/root/Global".player_hits >= 8:
 		shield_chance = 80
-	if shield_chance > 10 and $"/root/Global".player_hits < 8:
+	else:
 		shield_chance = 10
+	
 	speedup = false
 	shield_on = false
 	lightning_on = false
@@ -62,19 +69,15 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 
 
 func _on_VisibilityNotifier2D_screen_entered() -> void:
+	keep_running = true
 	$Particles2D.emitting = true
 	if speedup:
 		$Speedup.visible = true
 		$Speedup.playing = true
-	if $"/root/Global".player_hits >= 8:
-		speedup = false
-		lightning_on = false
-		shield_on = true
-		$Shield.visible = true
-		$Sprite.visible = false
-		$Speedup.visible = false
+	$ChangeTimer.start()
 
 func _on_VisibilityNotifier2D_screen_exited() -> void:
+	keep_running = false
 	$Particles2D.emitting = false
 	$Speedup.playing = false
 	$Speedup.visible = true

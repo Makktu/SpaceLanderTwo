@@ -132,8 +132,9 @@ func player_damaged(how_badly):
 	if player_hits > 6:
 		$DisplayEnergy/AnimationPlayer.play("low_shield")
 	if player_hits > 8:
-		$DisplayEnergy/AnimationPlayer.playback_speed *= 1.5
+		$DisplayEnergy/AnimationPlayer.playback_speed *= 0.75
 		$DisplayEnergy/AnimationPlayer.play("low_shield")
+	print(">>>>>>", player_hits)
 		
 func game_on(state):
 	if state:
