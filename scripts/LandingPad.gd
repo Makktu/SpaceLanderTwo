@@ -7,7 +7,8 @@ func _ready():
 
 func _on_Area2D_body_entered(body):
 	if body.name == 'player':
-		print("LANDED")
+		$LandingTimer.start()
+
 
 
 func _on_VisibilityNotifier2D_screen_entered():
@@ -16,3 +17,7 @@ func _on_VisibilityNotifier2D_screen_entered():
 
 func _on_VisibilityNotifier2D_screen_exited():
 	$AnimationPlayer.stop()
+
+
+func _on_LandingTimer_timeout():
+	get_tree().change_scene("res://scenes/EndLevelScreen.tscn")
